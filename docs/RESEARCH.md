@@ -200,6 +200,32 @@ A variable written in an on_action's `effect` block is not reliably readable by 
 the same tick. All of the mod's bookkeeping now lives in the event's `immediate` block; the
 on_action only sets the "summary is open" flag and fires the event.
 
+## 13. Event option keys must not collide with .t / .d / .f
+
+An option named `rpm_events.1.d` collides with the event's own `desc = rpm_events.1.d`. The game
+does not refuse it - it renders **the entire event description inside that button**, producing a
+huge unreadable option, and logs one line:
+
+```
+Duplicate localization key. Key 'rpm_events.1.d' is defined in both
+'localization/english/rpm_l_english.yml' and 'localization/english/rpm_l_english.yml'
+```
+
+With five options the conventional `.a .b .c .d .e` walks straight into it. Option keys in this
+mod are named `.opt_pms`, `.opt_levels`, `.opt_army`, `.opt_conscription`, `.opt_done` instead.
+
+## 14. Shrinking a Barracks raises its battalions again from nothing
+
+Because resizing goes through `remove_building` + `create_building`, shrinking a Barracks
+destroys its battalions and raises new ones at the smaller size. Vanilla notices:
+
+```
+Assertion failed: Trying to reposition a dead formation
+```
+
+Twice, at the moment of the restore. Nothing breaks, but veterancy and any unit-level state are
+lost, so the option text says plainly that the battalions are raised fresh.
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)

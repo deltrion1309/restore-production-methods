@@ -1,18 +1,21 @@
 ﻿l_english:
 
  # Post-war summary event
- rpm_events.1.t:0 "The Cost of Rebellion"
- rpm_events.1.d:0 "Our officials have finished their survey of the states recovered from the rebels. While the territory was out of our hands, its industry was reorganised to suit the insurgents' priorities rather than our own.\n\nAcross #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_states').GetValue|0]#! recovered states, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! production methods were changed in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings.\n\n#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings were expanded by a total of #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_reduced').GetValue|0]#! were reduced, and #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_new').GetValue|0]#! were raised where nothing stood before.\n\nShrinking a building rebuilds it, which resets its production methods, so those are put back at the same time. Buildings the rebels raised from nothing are left standing."
+ #
+ # Option keys are .opt_* on purpose. An option key of rpm_events.1.d collides
+ # with this event's own desc key, and the game then renders the entire
+ # description inside that button.
+ rpm_events.1.t:0 "The Rebels' Ledger"
+ rpm_events.1.d:0 "Our officials have finished their survey of the states recovered from the rebels. While the territory was out of our hands, its industry was reorganised to suit the insurgents' priorities rather than our own.\n\nAcross #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_states').GetValue|0]#! recovered states, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! production methods were changed in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings.\n\n#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings were expanded by a total of #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_reduced').GetValue|0]#! were reduced, and #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_new').GetValue|0]#! were raised where nothing stood before.\n\nBuildings the rebels raised from nothing are left standing, and nothing is ever built back up — only the insurgents' expansions are undone."
  rpm_events.1.f:0 "The ledgers do not lie, even when the rebels did."
- rpm_events.1.a:0 "Set the production methods back as they were."
- rpm_events.1.b:0 "Undo the expansions and shrink the buildings back."
- rpm_events.1.c:0 "Shrink the barracks back to their old size."
- rpm_events.1.d:0 "Shrink the conscription centres back to their old size."
- rpm_events.1.e:0 "Leave the rest as it is."
 
+ rpm_events.1.opt_pms:0 "Restore the production methods (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings)."
+ rpm_events.1.opt_levels:0 "Undo the expansions (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels)."
+ rpm_events.1.opt_army:0 "Shrink the barracks back. This rebuilds them, so their battalions are raised fresh."
+ rpm_events.1.opt_conscription:0 "Shrink the conscription centres back."
+ rpm_events.1.opt_done:0 "Leave the rest as it is."
 
  # Diagnostics (console: event rpm_events.9)
  rpm_events.9.t:0 "RPM diagnostics"
  rpm_events.9.d:0 "States carrying an unreported snapshot: #variable [ROOT.GetCountry.MakeScope.Var('rpm_dbg_pending').GetValue|0]#!\nStates already reported: #variable [ROOT.GetCountry.MakeScope.Var('rpm_dbg_reported').GetValue|0]#!\n\nCounted across returned states:\nStates: #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_states').GetValue|0]#!\nProduction methods changed: #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings\nBuildings expanded: #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! (+#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels)\nBuildings reduced: #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_reduced').GetValue|0]#!\nBuildings built by the rebels: #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_new').GetValue|0]#!"
- rpm_events.9.a:0 "Close."
-
+ rpm_events.9.opt_close:0 "Close."

@@ -140,7 +140,10 @@ the `rpm_events` namespace.
    demolish-and-rebuild idiom. The generator restricts it to Barracks (`bg_army`), Conscription
    Centres (`bg_conscription`) and every other building type not marked `expandable = no` - which
    keeps monuments, canals and subsistence farms out of it - and only ever shrinks. Whether
-   rebuilding loses ownership shares or private investment is untested.
+   rebuilding loses ownership shares or private investment is untested. It definitely costs
+   military buildings their battalions: shrinking a Barracks raises new ones at the smaller size,
+   losing veterancy, and vanilla logs "Trying to reposition a dead formation" while it happens.
+   The option text says so.
 2. Whether state variables survive the state changing owner twice. The snapshot is written while
    the rebel holds the state and read after it comes back, so this is load-bearing. The first
    in-game run confirmed the hooks fire and the effects run; it did not confirm the round trip,

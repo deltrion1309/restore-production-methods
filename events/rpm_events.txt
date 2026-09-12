@@ -9,6 +9,10 @@
 # Paradox documents that an on_action's effect block and the events it fires are
 # separate chains, so a variable written there is not reliably readable here.
 #
+# Option keys are named .opt_* rather than .a/.b/.c. An option called
+# rpm_events.1.d collides with the event's own desc key, and the game silently
+# renders the whole description inside that button instead of its label.
+#
 # Every option's work sits inside hidden_effect. Victoria 3 builds an option's
 # tooltip by evaluating its effects without committing the writes, so an effect
 # chain that reads a variable it set in the same pass floods the error log with
@@ -44,7 +48,7 @@ rpm_events.1 = {
 	}
 
 	option = {
-		name = rpm_events.1.a
+		name = rpm_events.1.opt_pms
 		hidden_effect = {
 			rpm_restore_pms = yes
 			rpm_reopen_summary_or_finish = yes
@@ -52,7 +56,7 @@ rpm_events.1 = {
 	}
 
 	option = {
-		name = rpm_events.1.b
+		name = rpm_events.1.opt_levels
 		hidden_effect = {
 			rpm_restore_levels_general = yes
 			rpm_reopen_summary_or_finish = yes
@@ -60,7 +64,7 @@ rpm_events.1 = {
 	}
 
 	option = {
-		name = rpm_events.1.c
+		name = rpm_events.1.opt_army
 		hidden_effect = {
 			rpm_restore_levels_army = yes
 			rpm_reopen_summary_or_finish = yes
@@ -68,7 +72,7 @@ rpm_events.1 = {
 	}
 
 	option = {
-		name = rpm_events.1.d
+		name = rpm_events.1.opt_conscription
 		hidden_effect = {
 			rpm_restore_levels_conscription = yes
 			rpm_reopen_summary_or_finish = yes
@@ -76,7 +80,7 @@ rpm_events.1 = {
 	}
 
 	option = {
-		name = rpm_events.1.e
+		name = rpm_events.1.opt_done
 		default_option = yes
 		hidden_effect = {
 			rpm_mark_states_reported = yes
@@ -109,7 +113,7 @@ rpm_events.9 = {
 	}
 
 	option = {
-		name = rpm_events.9.a
+		name = rpm_events.9.opt_close
 		default_option = yes
 	}
 }
