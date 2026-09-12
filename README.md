@@ -49,6 +49,11 @@ event rpm_events.9
 opens a panel showing how many states carry a snapshot and what the mod currently counts —
 useful for checking the mod without fighting a whole civil war first.
 
+The same panel toggles **verbose logging**. With it on, every difference the mod finds and every
+change it makes is written to the game log naming the state and the building type, so you can see
+exactly which building in which state was touched. Every line starts with `RPM `. See
+[dev/README.md](dev/README.md) for the workflow.
+
 ## Compatibility
 
 * Target game version: **1.13.\*** (Matcha)

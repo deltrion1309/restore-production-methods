@@ -96,6 +96,12 @@ rpm_events.1 = {
 #     event rpm_events.9
 # to see whether snapshots exist and what the mod currently counts, without
 # having to fight a whole civil war first.
+#
+# It also toggles verbose logging. With it on, every difference the mod finds
+# and every change it makes is written to the game log naming the state and the
+# building type - which is the only practical way to see which building in which
+# state was actually touched. Turn it on, then run this event again: the recount
+# in immediate dumps the whole picture.
 ###############################################################################
 rpm_events.9 = {
 	type = country_event
@@ -115,5 +121,25 @@ rpm_events.9 = {
 	option = {
 		name = rpm_events.9.opt_close
 		default_option = yes
+	}
+
+	# Verbose logging writes one line per difference found and per change made,
+	# naming the state and the building type, into the game log. It costs
+	# nothing while it is off, and debug_log only writes at all when the game is
+	# running in debug mode.
+	option = {
+		name = rpm_events.9.opt_log_on
+		hidden_effect = {
+			set_global_variable = rpm_debug
+			debug_log = "RPM verbose logging enabled"
+		}
+	}
+
+	option = {
+		name = rpm_events.9.opt_log_off
+		hidden_effect = {
+			debug_log = "RPM verbose logging disabled"
+			remove_global_variable = rpm_debug
+		}
 	}
 }

@@ -31,6 +31,32 @@ the mod folder entirely rather than leaving a `.bak` behind for the launcher to 
    Paradox script fails silently in game — the error log is the only feedback there is.
    A clean run means the file parsed, not that the logic is right.
 
+## Seeing which building in which state was touched
+
+The summary only gives totals. For the detail, use verbose logging:
+
+1. `event rpm_events.9` in the console.
+2. Pick *Turn verbose logging on*.
+3. `event rpm_events.9` again - its recount now writes one line per difference.
+
+Lines land in the game log (`Documents\Paradox Interactive\Victoria 3\logs`) and all start
+with `RPM `, so `findstr RPM game.log` pulls the lot:
+
+```
+RPM state       | Baden | recovered with a snapshot
+RPM pm changed  | Baden | building_tooling_workshop | group 0 | was pm_shiftwork
+RPM expanded    | Baden | building_textile_mills | snapshot level 4
+RPM rebel-built | Baden | building_arms_industry
+RPM shrinking   | Baden | building_textile_mills | back to level 4
+RPM pm restored | Baden | building_tooling_workshop | group 0 | to pm_shiftwork
+```
+
+Before/after is the useful test: dump once before restoring, restore, then dump again. The second
+dump should show nothing left to change.
+
+`debug_log` only writes when the game runs in debug mode, and the whole thing is behind a global
+variable that is off by default, so none of this costs anything in normal play.
+
 ## Useful console commands (debug mode)
 
 | Command | Use |

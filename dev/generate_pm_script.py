@@ -246,6 +246,10 @@ def emit(
                         f"\t\t\t{keyword} = {{\n"
                         f"\t\t\t\tlimit = {{ var:rpm_pm{index}_{building} = {position} }}\n"
                         f"\t\t\t\tactivate_production_method = {{ building_type = {building} production_method = {method} }}\n"
+                        f"\t\t\t\tif = {{\n"
+                        f"\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
+                        f"\t\t\t\t\tdebug_log = \"RPM pm restored | [THIS.GetState.GetNameNoFormatting] | {building} | group {index} | to {method}\"\n"
+                        f"\t\t\t\t}}\n"
                         f"\t\t\t}}"
                     )
                 restore_body.append(
@@ -270,6 +274,10 @@ def emit(
             "\t\tif = {",
             f"\t\t\tlimit = {{ NOT = {{ has_variable = rpm_lvl_{building} }} }}",
             "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }",
+            "\t\t\tif = {",
+            "\t\t\t\tlimit = { has_global_variable = rpm_debug }",
+            f"\t\t\t\tdebug_log = \"RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | {building}\"",
+            "\t\t\t}",
             "\t\t}",
             "\t\telse = {",
             "\t\t\tif = {",
@@ -285,10 +293,18 @@ def emit(
             "\t\t\t\t\tchange_variable = { name = rpm_sum_buildings_expanded add = 1 }",
             "\t\t\t\t\tchange_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }",
             "\t\t\t\t}",
+            "\t\t\t\tif = {",
+            "\t\t\t\t\tlimit = { has_global_variable = rpm_debug }",
+            f"\t\t\t\t\tdebug_log = \"RPM expanded | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
+            "\t\t\t\t}",
             "\t\t\t}",
             "\t\t\telse_if = {",
             f"\t\t\t\tlimit = {{ b:{building}.level < var:rpm_lvl_{building} }}",
             "\t\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_reduced add = 1 } }",
+            "\t\t\t\tif = {",
+            "\t\t\t\t\tlimit = { has_global_variable = rpm_debug }",
+            f"\t\t\t\t\tdebug_log = \"RPM reduced | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
+            "\t\t\t\t}",
             "\t\t\t}",
             "\t\t}",
         ]
@@ -306,6 +322,10 @@ def emit(
                         f"\t\t\t\t\tNOT = {{ is_production_method_active = {{ building_type = {building} production_method = {method} }} }}\n"
                         f"\t\t\t\t}}\n"
                         f"\t\t\t\tscope:rpm_player = {{ change_variable = {{ name = rpm_sum_pm_changes add = 1 }} }}\n"
+                        f"\t\t\t\tif = {{\n"
+                        f"\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
+                        f"\t\t\t\t\tdebug_log = \"RPM pm changed | [THIS.GetState.GetNameNoFormatting] | {building} | group {index} | was {method}\"\n"
+                        f"\t\t\t\t}}\n"
                         f"\t\t\t}}"
                     )
                 diff_body.append(
@@ -372,6 +392,10 @@ def emit(
                 f"\t\t\tb:{building}.level > var:rpm_lvl_{building}\n"
                 f"\t\t}}\n"
                 f"\t\tsave_temporary_scope_value_as = {{ name = rpm_target_level value = var:rpm_lvl_{building} }}\n"
+                f"\t\tif = {{\n"
+                f"\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
+                f"\t\t\tdebug_log = \"RPM shrinking | [THIS.GetState.GetNameNoFormatting] | {building} | back to level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"\n"
+                f"\t\t}}\n"
                 f"\t\tremove_building = {building}\n"
                 f"\t\tcreate_building = {{\n"
                 f"\t\t\tbuilding = \"{building}\"\n"

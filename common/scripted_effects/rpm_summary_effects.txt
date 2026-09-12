@@ -29,6 +29,15 @@ rpm_build_summary = {
 			change_variable = { name = rpm_sum_states add = 1 }
 		}
 
+		# Verbose logging, off unless the diagnostics event turned it on. The
+		# generated diff writes one line per difference it finds, naming the
+		# state, the building type, the production method group and the method
+		# it expected. debug_log only writes when the game runs in debug mode.
+		if = {
+			limit = { has_global_variable = rpm_debug }
+			debug_log = "RPM state | [THIS.GetState.GetNameNoFormatting] | recovered with a snapshot"
+		}
+
 		rpm_generated_diff_state = yes
 	}
 }
