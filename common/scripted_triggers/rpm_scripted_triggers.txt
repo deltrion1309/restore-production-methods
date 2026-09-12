@@ -40,5 +40,13 @@ rpm_has_anything_to_restore = {
 			has_variable = rpm_sum_buildings_expanded
 			var:rpm_sum_buildings_expanded > 0
 		}
+		AND = {
+			has_variable = rpm_sum_army_delta
+			var:rpm_sum_army_delta > 0
+		}
+		AND = {
+			has_variable = rpm_sum_navy_delta
+			var:rpm_sum_navy_delta > 0
+		}
 	}
 }

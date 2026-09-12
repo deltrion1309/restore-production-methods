@@ -17,6 +17,13 @@
 rpm_take_snapshot = {
 	save_scope_as = rpm_loyalist
 
+	# The army and navy are not per-state. In 1.13 you do not size Barracks by
+	# building them - you set an army size in the army view and the game sizes
+	# the Barracks to match. So the thing worth remembering is the country's own
+	# army and navy, and the thing to put back is its size target.
+	set_variable = { name = rpm_snap_army_size value = army_size }
+	set_variable = { name = rpm_snap_navy_size value = navy_size }
+
 	scope:target ?= {
 		every_scope_state = {
 			rpm_snapshot_state = yes

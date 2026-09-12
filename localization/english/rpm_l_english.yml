@@ -6,13 +6,13 @@
  # with this event's own desc key, and the game then renders the entire
  # description inside that button.
  rpm_events.1.t:0 "The Rebels' Ledger"
- rpm_events.1.d:0 "Our officials have finished their survey of the states recovered from the rebels. While the territory was out of our hands, its industry was reorganised to suit the insurgents' priorities rather than our own.\n\nAcross #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_states').GetValue|0]#! recovered states, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! production methods were changed in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings.\n\n#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings were expanded by a total of #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_reduced').GetValue|0]#! were reduced, and #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_new').GetValue|0]#! were raised where nothing stood before.\n\nA further #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_blocked').GetValue|0]#! production methods cannot be restored at all — a law or a technology no longer permits them — and are left as they are.\n\nA further #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_grew').GetValue|0]#! buildings grew or appeared on their own — urban centres, manor houses, subsistence farms and the like, which follow urbanisation and population rather than anyone's policy. Nobody can resize those, so they are only listed.\n\nBuildings the rebels raised from nothing are left standing, and nothing is ever built back up — only the insurgents' expansions are undone."
+ rpm_events.1.d:0 "Our officials have finished their survey of the states recovered from the rebels. While the territory was out of our hands, its industry was reorganised to suit the insurgents' priorities rather than our own.\n\nAcross #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_states').GetValue|0]#! recovered states, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! production methods were changed in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings, and #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings were expanded by a total of #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels.\n\nOur army now stands #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_army_delta').GetValue|0]#! battalions and our navy #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_navy_delta').GetValue|0]#! flotillas above what we kept before the revolt."
  rpm_events.1.f:0 "The ledgers do not lie, even when the rebels did."
 
  rpm_events.1.opt_pms:0 "Restore the production methods (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_changes').GetValue|0]#! in #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_pm_buildings').GetValue|0]#! buildings)."
  rpm_events.1.opt_levels:0 "Undo the expansions (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_buildings_expanded').GetValue|0]#! buildings, #variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_levels_added').GetValue|0]#! levels)."
- rpm_events.1.opt_army:0 "Shrink the barracks back. This rebuilds them, so their battalions are raised fresh."
- rpm_events.1.opt_conscription:0 "Shrink the conscription centres back."
+ rpm_events.1.opt_army:0 "Set the army back to its pre-war size (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_army_delta').GetValue|0]#! battalions above it)."
+ rpm_events.1.opt_navy:0 "Set the navy back to its pre-war size (#variable [ROOT.GetCountry.MakeScope.Var('rpm_sum_navy_delta').GetValue|0]#! flotillas above it)."
  rpm_events.1.opt_done:0 "Leave the rest as it is."
 
  # Diagnostics (console: event rpm_events.9)
@@ -21,3 +21,4 @@
  rpm_events.9.opt_close:0 "Close."
  rpm_events.9.opt_log_on:0 "Turn verbose logging on, then reopen this to dump every difference to the game log."
  rpm_events.9.opt_log_off:0 "Turn verbose logging off."
+ rpm_events.9.opt_probe_army:0 "Log the army and navy numbers (changes nothing)."

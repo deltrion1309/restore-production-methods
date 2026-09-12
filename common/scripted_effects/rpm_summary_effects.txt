@@ -17,12 +17,46 @@ rpm_reset_summary = {
 	set_variable = { name = rpm_sum_pm_buildings value = 0 }
 	set_variable = { name = rpm_sum_pm_blocked value = 0 }
 	set_variable = { name = rpm_sum_buildings_grew value = 0 }
+	set_variable = { name = rpm_sum_army_delta value = 0 }
+	set_variable = { name = rpm_sum_navy_delta value = 0 }
 }
 
 # Scope: country
 rpm_build_summary = {
 	save_scope_as = rpm_player
 	rpm_reset_summary = yes
+
+	# How much bigger the army and navy are than when the revolt broke out.
+	# Retaking the rebels' states hands you their barracks, so this is usually
+	# the difference the player wants undone.
+	if = {
+		limit = {
+			has_variable = rpm_snap_army_size
+			army_size > var:rpm_snap_army_size
+		}
+		save_temporary_scope_value_as = {
+			name = rpm_army_delta
+			value = {
+				value = army_size
+				subtract = var:rpm_snap_army_size
+			}
+		}
+		set_variable = { name = rpm_sum_army_delta value = scope:rpm_army_delta }
+	}
+	if = {
+		limit = {
+			has_variable = rpm_snap_navy_size
+			navy_size > var:rpm_snap_navy_size
+		}
+		save_temporary_scope_value_as = {
+			name = rpm_navy_delta
+			value = {
+				value = navy_size
+				subtract = var:rpm_snap_navy_size
+			}
+		}
+		set_variable = { name = rpm_sum_navy_delta value = scope:rpm_navy_delta }
+	}
 
 	every_scope_state = {
 		limit = { rpm_state_is_returned = yes }
@@ -55,4 +89,6 @@ rpm_mark_states_reported = {
 	}
 	remove_variable = rpm_summary_open
 	remove_variable = rpm_summary_shows
+	remove_variable = rpm_snap_army_size
+	remove_variable = rpm_snap_navy_size
 }

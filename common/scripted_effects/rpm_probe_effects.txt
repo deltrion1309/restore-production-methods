@@ -1,0 +1,30 @@
+﻿###############################################################################
+# TEMPORARY - delete once the army numbers have been eyeballed once.
+#
+# The four values below are documented as readable from country scope. The mod
+# now uses army_size and navy_size for its snapshot, and feeds them back through
+# set_country_army_sp_target / set_country_navy_sp_target.
+#
+# What is not documented is whether a "Strength Point" target is the same unit
+# as a battalion count. Log all four, compare them with what the army and navy
+# views show, and we will know whether the restore is setting the right number.
+#
+# Scope: country.
+###############################################################################
+
+rpm_probe_army_values = {
+	set_variable = { name = rpm_probe_1 value = army_size }
+	set_variable = { name = rpm_probe_2 value = army_size_including_conscripts }
+	set_variable = { name = rpm_probe_3 value = army_size_including_raised_conscripts }
+	set_variable = { name = rpm_probe_4 value = navy_size }
+
+	debug_log = "RPM probe | army_size                          = [THIS.GetCountry.MakeScope.Var('rpm_probe_1').GetValue|0]"
+	debug_log = "RPM probe | army_size_including_conscripts     = [THIS.GetCountry.MakeScope.Var('rpm_probe_2').GetValue|0]"
+	debug_log = "RPM probe | army_size_including_raised_consc.  = [THIS.GetCountry.MakeScope.Var('rpm_probe_3').GetValue|0]"
+	debug_log = "RPM probe | navy_size                          = [THIS.GetCountry.MakeScope.Var('rpm_probe_4').GetValue|0]"
+
+	remove_variable = rpm_probe_1
+	remove_variable = rpm_probe_2
+	remove_variable = rpm_probe_3
+	remove_variable = rpm_probe_4
+}

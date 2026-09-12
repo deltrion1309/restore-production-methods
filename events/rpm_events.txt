@@ -66,15 +66,15 @@ rpm_events.1 = {
 	option = {
 		name = rpm_events.1.opt_army
 		hidden_effect = {
-			rpm_restore_levels_army = yes
+			rpm_restore_army_size = yes
 			rpm_reopen_summary_or_finish = yes
 		}
 	}
 
 	option = {
-		name = rpm_events.1.opt_conscription
+		name = rpm_events.1.opt_navy
 		hidden_effect = {
-			rpm_restore_levels_conscription = yes
+			rpm_restore_navy_size = yes
 			rpm_reopen_summary_or_finish = yes
 		}
 	}
@@ -140,6 +140,16 @@ rpm_events.9 = {
 		hidden_effect = {
 			debug_log = "RPM verbose logging disabled"
 			remove_global_variable = rpm_debug
+		}
+	}
+
+	# Temporary. Finds out which army-size values can be read from script, so
+	# the barracks restore can act on the army size target instead of the
+	# barracks building. Delete with rpm_probe_effects.txt once answered.
+	option = {
+		name = rpm_events.9.opt_probe_army
+		hidden_effect = {
+			rpm_probe_army_values = yes
 		}
 	}
 }
