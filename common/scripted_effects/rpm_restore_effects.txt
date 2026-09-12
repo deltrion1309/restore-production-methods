@@ -15,6 +15,30 @@ rpm_restore_pms = {
 	}
 }
 
+# Scope: country.
+# A Victoria 3 event closes as soon as an option is picked, so applying one
+# restore and then reopening the summary is how several restores are offered in
+# turn. Two things stop that becoming a loop:
+#
+#   1. it only reopens while something is actually left to restore, and
+#   2. a hard cap on how many times the summary may reopen, so a restore that
+#      silently fails to change anything cannot trap the player.
+rpm_reopen_summary_or_finish = {
+	change_variable = { name = rpm_summary_shows add = 1 }
+
+	if = {
+		limit = {
+			has_variable = rpm_summary_shows
+			var:rpm_summary_shows < rpm_max_summary_shows
+			rpm_has_anything_to_restore = yes
+		}
+		trigger_event = { id = rpm_events.1 popup = yes }
+	}
+	else = {
+		rpm_mark_states_reported = yes
+	}
+}
+
 ###############################################################################
 # Diagnostics - only reachable from the debug event (console: event rpm_events.9)
 ###############################################################################

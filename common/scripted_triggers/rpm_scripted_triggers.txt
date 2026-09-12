@@ -1,9 +1,12 @@
 ﻿###############################################################################
 # Restore Production Methods - shared conditions
+#
+# Every var: read is guarded by has_variable. Reading an unset variable is an
+# error in Victoria 3, not a silent zero.
 ###############################################################################
 
 # Scope: state
-# A state that was snapshotted when it defected and has not been reported on yet.
+# A state that was snapshotted when it defected and has not been reported yet.
 rpm_state_is_snapshotted = {
 	has_variable = rpm_pending
 }
@@ -22,4 +25,12 @@ rpm_has_returned_states = {
 	any_scope_state = {
 		rpm_state_is_returned = yes
 	}
+}
+
+# Scope: country
+# Is there anything left for the player to put back? This is what stops the
+# summary reopening forever once every restore has been applied.
+rpm_has_anything_to_restore = {
+	has_variable = rpm_sum_pm_changes
+	var:rpm_sum_pm_changes > 0
 }

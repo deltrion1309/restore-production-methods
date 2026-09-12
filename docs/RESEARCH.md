@@ -142,6 +142,41 @@ Triggers confirmed available from `triggers_l_english.yml`: `has_building` (stat
 building type), `is_building_type` (building), `has_active_production_method` (building),
 `is_production_method_active` (country/state, takes building type + method).
 
+## 10. Event options evaluate their effects twice - the tooltip trap
+
+Putting the summary's recount inside an event option produced 400+ errors in two seconds:
+
+```
+Error: Failed to fetch variable for 'rpm_tmp_pm_changes' due to not being set
+Error: Invalid left side during comparison 'var'
+Error: Event target link 'var' returned an unset scope
+  Script location: common/scripted_effects/rpm_generated_effects.txt
+  events/rpm_events.txt:34
+```
+
+The same effect chain, called from an on_action, had run clean. The difference is that Victoria 3
+builds an event option's **tooltip** by evaluating its effects without committing the writes. Any
+chain that writes a variable and then reads it back in the same pass therefore fails during the
+tooltip pass, on every hover, once per iteration.
+
+Two lessons, both applied:
+
+* Wrap an event option's real work in `hidden_effect = { }` (confirmed present in vanilla,
+  `00_victoria_ip4_scripted_effects.txt`). The tooltip pass skips it.
+* Better still, do not write-then-read within one effect chain at all. The generated diff no
+  longer uses a temporary counter: each changed production method group increments the country
+  counter directly, and a building is counted once via an `OR` over all its group/method
+  mismatches. Every `var:` read is now of a snapshot variable, guarded by `has_variable`.
+
+Reading an unset variable is an **error** in Victoria 3, not a silent zero, so every `var:` read
+in a trigger is paired with `has_variable`.
+
+## 11. Effect parameters are not validated at load
+
+Neither spelling in `rpm_probe_effects.txt` produced a load-time error, so Paradox only validates
+an effect's parameters when the effect actually executes. The probe has to be *run* to answer the
+`add_building_level` question - loading the mod is not enough.
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)

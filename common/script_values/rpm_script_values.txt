@@ -1,0 +1,8 @@
+﻿###############################################################################
+# Restore Production Methods - tuning values
+###############################################################################
+
+# How many times the post-war summary may reopen before it closes itself.
+# Each restore button reopens it once; this is the backstop that keeps a
+# restore which silently changes nothing from trapping the player in the popup.
+rpm_max_summary_shows = 8

@@ -43,4 +43,5 @@ rpm_mark_states_reported = {
 		set_variable = rpm_reported
 	}
 	remove_variable = rpm_summary_open
+	remove_variable = rpm_summary_shows
 }

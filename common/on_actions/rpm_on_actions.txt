@@ -62,6 +62,7 @@ rpm_check_returned_states = {
 	}
 	effect = {
 		set_variable = rpm_summary_open
+		set_variable = { name = rpm_summary_shows value = 1 }
 		rpm_build_summary = yes
 		trigger_event = { id = rpm_events.1 popup = yes }
 	}

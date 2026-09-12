@@ -5,10 +5,11 @@
 #
 # Fired once the player holds snapshotted states again.
 #
-# A Victoria 3 event closes when an option is picked, but the mod needs several
-# independent restore buttons. So each restore option applies its effect,
-# recounts, and re-fires this same event - the summary reopens with the numbers
-# updated, and "Leave the rest as it is" closes it for good.
+# Every option's work sits inside hidden_effect. Victoria 3 builds an option's
+# tooltip by evaluating its effects without committing the writes, so an effect
+# chain that reads a variable it set in the same pass floods the error log with
+# "Failed to fetch variable ... due to not being set". hidden_effect keeps the
+# tooltip pass out of it entirely.
 ###############################################################################
 rpm_events.1 = {
 	type = country_event
@@ -30,15 +31,19 @@ rpm_events.1 = {
 
 	option = {
 		name = rpm_events.1.a
-		rpm_restore_pms = yes
-		rpm_build_summary = yes
-		trigger_event = { id = rpm_events.1 popup = yes }
+		hidden_effect = {
+			rpm_restore_pms = yes
+			rpm_build_summary = yes
+			rpm_reopen_summary_or_finish = yes
+		}
 	}
 
 	option = {
 		name = rpm_events.1.b
 		default_option = yes
-		rpm_mark_states_reported = yes
+		hidden_effect = {
+			rpm_mark_states_reported = yes
+		}
 	}
 }
 
@@ -74,9 +79,11 @@ rpm_events.9 = {
 	# nothing changes and error.log names whichever one is wrong.
 	option = {
 		name = rpm_events.9.b
-		capital ?= {
-			rpm_probe_add_building_level_type = yes
-			rpm_probe_add_building_level_building = yes
+		hidden_effect = {
+			capital ?= {
+				rpm_probe_add_building_level_type = yes
+				rpm_probe_add_building_level_building = yes
+			}
 		}
 	}
 }

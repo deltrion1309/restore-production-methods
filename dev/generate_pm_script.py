@@ -241,13 +241,17 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
             )
 
         # ---- diff against the snapshot ------------------------------------ #
+        # No temporary variables anywhere: an event option's tooltip pass
+        # evaluates effects without committing writes, so anything that reads a
+        # variable it wrote in the same pass errors out. Every read here is of a
+        # snapshot variable, guarded by has_variable.
         diff_body = [
             "\t\tif = {",
             f"\t\t\tlimit = {{ NOT = {{ has_variable = rpm_lvl_{building} }} }}",
             "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }",
             "\t\t}",
             "\t\telse = {",
-            f"\t\t\tif = {{",
+            "\t\t\tif = {",
             f"\t\t\t\tlimit = {{ b:{building}.level > var:rpm_lvl_{building} }}",
             "\t\t\t\tsave_temporary_scope_value_as = {",
             "\t\t\t\t\tname = rpm_delta",
@@ -261,7 +265,7 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
             "\t\t\t\t\tchange_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }",
             "\t\t\t\t}",
             "\t\t\t}",
-            f"\t\t\telse_if = {{",
+            "\t\t\telse_if = {",
             f"\t\t\t\tlimit = {{ b:{building}.level < var:rpm_lvl_{building} }}",
             "\t\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_reduced add = 1 } }",
             "\t\t\t}",
@@ -269,11 +273,10 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
         ]
 
         if group_names:
-            diff_body.append("\t\tset_variable = { name = rpm_tmp_pm_changes value = 0 }")
+            # One increment per group whose active method no longer matches.
             for index, group in enumerate(group_names):
-                methods = groups[group]
                 branches = []
-                for position, method in enumerate(methods):
+                for position, method in enumerate(groups[group]):
                     keyword = "if" if position == 0 else "else_if"
                     branches.append(
                         f"\t\t\t{keyword} = {{\n"
@@ -281,7 +284,7 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
                         f"\t\t\t\t\tvar:rpm_pm{index}_{building} = {position}\n"
                         f"\t\t\t\t\tNOT = {{ is_production_method_active = {{ building_type = {building} production_method = {method} }} }}\n"
                         f"\t\t\t\t}}\n"
-                        f"\t\t\t\tchange_variable = {{ name = rpm_tmp_pm_changes add = 1 }}\n"
+                        f"\t\t\t\tscope:rpm_player = {{ change_variable = {{ name = rpm_sum_pm_changes add = 1 }} }}\n"
                         f"\t\t\t}}"
                     )
                 diff_body.append(
@@ -290,17 +293,28 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
                     + "\n".join(branches)
                     + "\n\t\t}"
                 )
-            diff_body.extend([
-                "\t\tif = {",
-                "\t\t\tlimit = { var:rpm_tmp_pm_changes > 0 }",
-                "\t\t\tsave_temporary_scope_value_as = { name = rpm_bldg_pm_changes value = var:rpm_tmp_pm_changes }",
-                "\t\t\tscope:rpm_player = {",
-                "\t\t\t\tchange_variable = { name = rpm_sum_pm_changes add = scope:rpm_bldg_pm_changes }",
-                "\t\t\t\tchange_variable = { name = rpm_sum_pm_buildings add = 1 }",
-                "\t\t\t}",
-                "\t\t}",
-                "\t\tremove_variable = rpm_tmp_pm_changes",
-            ])
+
+            # And count the building once if any of its groups changed at all.
+            any_changed = []
+            for index, group in enumerate(group_names):
+                for position, method in enumerate(groups[group]):
+                    any_changed.append(
+                        f"\t\t\t\tAND = {{\n"
+                        f"\t\t\t\t\thas_variable = rpm_pm{index}_{building}\n"
+                        f"\t\t\t\t\tvar:rpm_pm{index}_{building} = {position}\n"
+                        f"\t\t\t\t\tNOT = {{ is_production_method_active = {{ building_type = {building} production_method = {method} }} }}\n"
+                        f"\t\t\t\t}}"
+                    )
+            diff_body.append(
+                "\t\tif = {\n"
+                "\t\t\tlimit = {\n"
+                "\t\t\t\tOR = {\n"
+                + "\n".join(any_changed)
+                + "\n\t\t\t\t}\n"
+                "\t\t\t}\n"
+                "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_pm_buildings add = 1 } }\n"
+                "\t\t}"
+            )
 
         diff.append(
             f"\tif = {{\n"
