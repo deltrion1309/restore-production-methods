@@ -20,43 +20,26 @@ rpm_restore_pms = {
 	}
 }
 
-# Scope: country. Put the army back to the size it was before the revolt.
+# Scope: country. Shrink Barracks in the recovered states back to their pre-war
+# level.
 #
-# Barracks are not sized by building them: you set an army size in the army view
-# and the game builds or downsizes Barracks to match. Shrinking the buildings
-# while the target stayed high just invited the game to rebuild them, which is
-# why the old barracks button never appeared to do anything.
-#
-# The target is country-wide rather than per-state. There is no way around that:
-# a military formation exposes its front, country, commander and headquarters to
-# script, but not its size, so per-army targets cannot be read or written.
-rpm_restore_army_size = {
-	if = {
-		limit = { has_variable = rpm_snap_army_size }
-		set_country_army_sp_target = var:rpm_snap_army_size
-		if = {
-			limit = { has_global_variable = rpm_debug }
-			debug_log = "RPM army target set back to [THIS.GetCountry.MakeScope.Var('rpm_snap_army_size').GetValue|0]"
-		}
+# This is the only lever there is. The army view's plus and minus buttons look
+# like a separate army-size mechanic, and the game even ships tooltip text for
+# set_country_army_sp_target and set_country_navy_sp_target - but neither effect
+# exists: "Unknown effect set_country_army_sp_target". Barracks are an ordinary
+# buildable, expandable building, so the building is what the mod acts on.
+rpm_restore_levels_army = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		rpm_generated_restore_levels_army_state = yes
 	}
+	rpm_restore_pms = yes
 }
 
-# Scope: country. The same for the navy.
-rpm_restore_navy_size = {
-	if = {
-		limit = { has_variable = rpm_snap_navy_size }
-		set_country_navy_sp_target = var:rpm_snap_navy_size
-		if = {
-			limit = { has_global_variable = rpm_debug }
-			debug_log = "RPM navy target set back to [THIS.GetCountry.MakeScope.Var('rpm_snap_navy_size').GetValue|0]"
-		}
-	}
-}
-
-# Scope: country. Shrink every expandable building back to its pre-war level,
-# undoing the rebel AI's expansions. Buildings the AI shrank are left alone,
-# buildings it built from scratch are never demolished, and Barracks and
-# Conscription Centres are not touched here - they follow the army size target.
+# Scope: country. Shrink every other expandable building back to its pre-war
+# level, undoing the rebel AI's expansions. Buildings the AI shrank are left
+# alone, and buildings it built from scratch are never demolished. Barracks have
+# their own button; Conscription Centres cannot be resized by anyone.
 rpm_restore_levels_general = {
 	every_scope_state = {
 		limit = { rpm_state_is_returned = yes }

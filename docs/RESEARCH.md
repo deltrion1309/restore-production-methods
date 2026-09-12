@@ -286,6 +286,37 @@ The general lesson, third time now: **any counter the summary offers a button fo
 exactly what that button can change.** The same mismatch caused the blocked production methods in
 §15.
 
+## 18. The effect localization file lists effects that do not exist
+
+Twice now, a promising effect found in `effects_l_english.yml` turned out not to be in the game:
+
+```
+Unknown effect add_building_level          at rpm_probe_effects.txt
+Unknown effect set_country_army_sp_target  at rpm_restore_effects.txt
+Unknown effect set_country_navy_sp_target  at rpm_restore_effects.txt
+```
+
+All three ship a tooltip key. None of them is a real effect in 1.13. So that file is a list of
+*candidates* to test, never a list of what exists - the only proof is loading the mod and reading
+the error log. Read-side event targets have been reliable by contrast: `army_size`,
+`army_size_including_conscripts`, `army_size_including_raised_conscripts` and `navy_size` all read
+correctly (12, 12, 12 and 15 in the test).
+
+## 19. There is no army size lever in script at all
+
+The army view's plus and minus buttons have no scripted equivalent. The two effects that would
+have provided one do not exist, and the military_formation scope exposes only front, country,
+commander, headquarters and fleet detection - not size. So:
+
+* **Barracks** are restored as what they are: an ordinary buildable, expandable building, through
+  the same demolish-and-rebuild path as everything else.
+* **Conscription Centres** cannot be touched at all - `buildable = no`, `expandable = no`,
+  `downsizeable = no`, and no conscript-sizing effect exists.
+
+The army and navy sizes are still snapshotted and reported, because knowing the army came back
+eight battalions larger explains why you might want the barracks button. They are reporting only:
+no button claims to fix them, so nothing waits on a counter that can never reach zero.
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)

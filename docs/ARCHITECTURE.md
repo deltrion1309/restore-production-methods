@@ -133,38 +133,28 @@ docs/                            this file and the research notes
 Naming: every script object is prefixed `rpm_`, every localization key `rpm_`, every event is in
 the `rpm_events` namespace.
 
-## The military restores act on the army, not on barracks
+## The military restores
 
-The first design treated regulars and conscripts as building levels, because that is what they are
-made of. Playing it says otherwise: in 1.13 you do not size Barracks by building them, you set an
-army size in the army view and the game builds or downsizes Barracks to match. Shrinking the
-buildings while the target stayed high just invited the game to rebuild them, which is why that
-button never appeared to do anything.
+Three designs were tried. The engine settled it.
 
-So the military restore now sets the country's size target instead:
+1. *Shrink the Barracks building.* Right mechanism, never tested — no test civil war ever expanded
+   a Barracks, so the button always had nothing to do and looked broken.
+2. *Set the country's army size target,* since the army view is how a player sizes barracks. Ruled
+   out: `set_country_army_sp_target` and `set_country_navy_sp_target` ship tooltip text but are not
+   real effects. Per-formation targets are worse — the military_formation scope exposes its front,
+   country, commander, headquarters and fleet detection, not its size.
+3. Back to 1, which is now understood rather than assumed: Barracks are an ordinary buildable,
+   expandable building, and the army view is a convenience over building them. There is no other
+   lever in script, so the building is the lever.
 
-| | |
-|---|---|
-| read | `army_size`, `navy_size` — country event targets, snapshotted at outbreak |
-| write | `set_country_army_sp_target`, `set_country_navy_sp_target` |
+**Conscription Centres are out.** `buildable = no`, `expandable = no`, `downsizeable = no`, and no
+conscript-sizing effect exists. Their level follows mobilisation laws and population. There is no
+honest button, so there is no button.
 
-Barracks (`bg_army`) and Conscription Centres (`bg_conscription`) are excluded from the
-building-level restore and from the expansion count entirely. They follow the target.
-
-**Per-army targets are not possible.** A country can hold several formations whose sizes add up to
-the total, and it would be better to remember each one — but the military_formation scope exposes
-only its front, country, commander, headquarters and (for fleets) detection. Not its size. So the
-target can only be restored country-wide, and the summary says so rather than naming states.
-
-**Conscripts have no separate lever.** `building_conscription_center` is `buildable = no`,
-`expandable = no`, `downsizeable = no`, and no conscript-sizing effect exists in the game's effect
-list. Conscript formations are sized through the same formation UI that script cannot reach, so
-there is no honest button to offer. The navy button takes that slot instead, which also covers the
-fleet half of the original requirements.
-
-**Still unverified:** whether a "Strength Point" target is the same unit as a battalion count. The
-snapshot stores battalions and feeds them to an SP target. `rpm_probe_effects.txt` logs all four
-readable army and navy values so they can be compared against what the army view shows.
+The country's `army_size` and `navy_size` are still snapshotted at the outbreak and reported in the
+summary — "our army now stands 8 battalions above what we kept" — because that is what explains
+the barracks button. They are reporting only: no restore claims to fix them, and they are kept out
+of `rpm_has_anything_to_restore` so nothing waits on a counter no button can clear.
 
 ## Open questions
 

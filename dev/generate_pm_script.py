@@ -199,7 +199,7 @@ def emit(
     restore_pms: list[str] = []
     diff: list[str] = []
     clear: list[str] = []
-    levels: dict[str, list[str]] = {"army": [], "conscription": [], "general": []}
+    levels: dict[str, list[str]] = {"army": [], "general": []}
 
     stats = {"n_buildings": 0, "n_methods": 0, "max_groups": 0}
     methods_seen: set[str] = set()
@@ -221,11 +221,21 @@ def emit(
         # Nothing can shrink them, so the diff must not count their growth as
         # something the player can undo - otherwise the counter never reaches
         # zero and the restore button sits there doing nothing.
+        # Barracks (bg_army) get their own bucket so they can be restored by a
+        # separate button, as the requirements ask. They are an ordinary
+        # buildable, expandable building - the army view is only a convenience
+        # over building them - and there is no script effect for an army size
+        # target, so the building is the only lever there is.
+        #
+        # Conscription Centres are excluded entirely: buildable = no,
+        # expandable = no, downsizeable = no. So is anything else marked
+        # expandable = no - urban centres, manor houses, subsistence farms grow
+        # on their own and nobody can resize them.
         meta = building_meta.get(building, {})
         if meta.get("building_group") == "bg_army":
             bucket = "army"
         elif meta.get("building_group") == "bg_conscription":
-            bucket = "conscription"
+            bucket = None
         elif meta.get("expandable") != "no":
             bucket = "general"
         else:
@@ -464,11 +474,6 @@ def emit(
         "# Scope: state. Shrink Barracks back to the snapshot.",
         "rpm_generated_restore_levels_army_state = {",
         "\n".join(levels["army"]) or "\t# no building types in bg_army",
-        "}",
-        "",
-        "# Scope: state. Shrink Conscription Centres back to the snapshot.",
-        "rpm_generated_restore_levels_conscription_state = {",
-        "\n".join(levels["conscription"]) or "\t# no building types in bg_conscription",
         "}",
         "",
         "# Scope: state. Shrink every other expandable building back to the snapshot.",

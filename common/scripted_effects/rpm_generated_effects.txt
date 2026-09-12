@@ -12339,10 +12339,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_barrack }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_barrack } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_barrack"
+				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_barrack"
 			}
 		}
 		else = {
@@ -12356,12 +12356,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_grew add = 1 }
-					# growth of this building type cannot be undone by anyone
+					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
+					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_barrack | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_barrack').GetValue|0]"
+					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_barrack | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_barrack').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -33378,7 +33378,29 @@ rpm_generated_diff_state = {
 	}
 }
 
-# Scope: state. Shrink every expandable building back to the snapshot.
+# Scope: state. Shrink Barracks back to the snapshot.
+rpm_generated_restore_levels_army_state = {
+	if = {
+		limit = {
+			has_building = building_barrack
+			has_variable = rpm_lvl_building_barrack
+			b:building_barrack.level > var:rpm_lvl_building_barrack
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_barrack }
+		if = {
+			limit = { has_global_variable = rpm_debug }
+			debug_log = "RPM shrinking | [THIS.GetState.GetNameNoFormatting] | building_barrack | back to level [THIS.GetState.MakeScope.Var('rpm_lvl_building_barrack').GetValue|0]"
+		}
+		remove_building = building_barrack
+		create_building = {
+			building = "building_barrack"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+}
+
+# Scope: state. Shrink every other expandable building back to the snapshot.
 rpm_generated_restore_levels_general_state = {
 	if = {
 		limit = {
