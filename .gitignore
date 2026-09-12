@@ -1,0 +1,14 @@
+# Paradox launcher / Steam workshop artefacts
+.launcher-cache/
+steamcmd/
+*.zip
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*~
+
+# Local, machine-specific dev config
+dev/local.*

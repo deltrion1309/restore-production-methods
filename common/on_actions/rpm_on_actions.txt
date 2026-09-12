@@ -1,0 +1,68 @@
+###############################################################################
+# Restore Production Methods - on_action hooks
+#
+# Vanilla on_actions are extended additively, using the pattern documented in
+# game/common/on_actions/_on_actions.md:
+#
+#     some_vanilla_on_action = { on_actions = { some_modded_on_action } }
+#
+# This means no vanilla file is overridden and the mod stays compatible with
+# other mods that touch the same on_actions.
+#
+# NOTE: do not hook on_state_owner_change this way. Vanilla already declares an
+# on_actions block on it (ip4_lands_of_anarchy_remove_on_state_lost) and a
+# second one is a conflict, not a merge.
+###############################################################################
+
+### Phase 1 - snapshot ########################################################
+# Root = the loyalist country, scope:target = the uprising country.
+# The defecting states already belong to scope:target when these fire.
+
+on_revolution_start = {
+	on_actions = { rpm_civil_war_start }
+}
+
+on_secession_start = {
+	on_actions = { rpm_civil_war_start }
+}
+
+### Phase 2 - detect regained states ##########################################
+# on_civil_war_won gives an immediate check the moment a revolution is put down.
+# The monthly pulse is the safety net: it also catches states retaken piecemeal,
+# or in a separate war years later.
+
+on_civil_war_won = {
+	on_actions = { rpm_check_returned_states }
+}
+
+on_monthly_pulse_country = {
+	on_actions = { rpm_check_returned_states }
+}
+
+###############################################################################
+# Mod on_actions
+###############################################################################
+
+# Root = country (the loyalist side), scope:target = the uprising country.
+rpm_civil_war_start = {
+	trigger = {
+		is_player = yes
+	}
+	effect = {
+		rpm_take_snapshot = yes
+	}
+}
+
+# Root = country.
+rpm_check_returned_states = {
+	trigger = {
+		is_player = yes
+		NOT = { has_variable = rpm_summary_open }
+		rpm_has_returned_states = yes
+	}
+	effect = {
+		set_variable = rpm_summary_open
+		rpm_build_summary = yes
+		trigger_event = { id = rpm_events.1 popup = yes }
+	}
+}

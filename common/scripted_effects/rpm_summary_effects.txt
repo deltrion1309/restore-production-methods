@@ -1,0 +1,75 @@
+###############################################################################
+# Restore Production Methods - Phase 2, the post-war summary
+#
+# Counts what changed between the snapshot and now, across every state that has
+# come back. The counters live as country variables so the event text can print
+# them.
+###############################################################################
+
+# Scope: country
+rpm_reset_summary = {
+	set_variable = { name = rpm_sum_states value = 0 }
+	set_variable = { name = rpm_sum_buildings_expanded value = 0 }
+	set_variable = { name = rpm_sum_buildings_reduced value = 0 }
+	set_variable = { name = rpm_sum_buildings_new value = 0 }
+	set_variable = { name = rpm_sum_levels_added value = 0 }
+}
+
+# Scope: country
+rpm_build_summary = {
+	save_scope_as = rpm_player
+	rpm_reset_summary = yes
+
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+
+		scope:rpm_player = {
+			change_variable = { name = rpm_sum_states add = 1 }
+		}
+
+		every_scope_building = {
+			if = {
+				# No snapshot variable at all: the rebel AI built this from scratch.
+				limit = { NOT = { has_variable = rpm_snap_level } }
+				scope:rpm_player = {
+					change_variable = { name = rpm_sum_buildings_new add = 1 }
+				}
+			}
+			else_if = {
+				limit = { level > var:rpm_snap_level }
+				save_temporary_scope_value_as = {
+					name = rpm_delta
+					value = {
+						value = level
+						subtract = var:rpm_snap_level
+					}
+				}
+				scope:rpm_player = {
+					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
+					change_variable = {
+						name = rpm_sum_levels_added
+						add = scope:rpm_delta
+					}
+				}
+			}
+			else_if = {
+				limit = { level < var:rpm_snap_level }
+				scope:rpm_player = {
+					change_variable = { name = rpm_sum_buildings_reduced add = 1 }
+				}
+			}
+		}
+	}
+}
+
+# Scope: country
+# Mark the returned states as reported so the monthly check stops firing for
+# them. The per-building level snapshot is deliberately kept: Phase 3 needs it.
+rpm_mark_states_reported = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		remove_variable = rpm_pending
+		set_variable = rpm_reported
+	}
+	remove_variable = rpm_summary_open
+}

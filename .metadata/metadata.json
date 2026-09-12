@@ -1,0 +1,17 @@
+{
+	"name" : "Restore Production Methods",
+	"id" : "com.github.deltrion1309.restore-production-methods",
+	"version" : "0.1.0",
+	"game_id" : "victoria3",
+	"supported_game_version" : "1.13.*",
+	"short_description" : "Snapshots your states when a revolution or secession takes them, reports what the rebel AI changed, and lets you restore production methods and building levels once you get them back.",
+	"tags" : [
+		"Utilities",
+		"Gameplay",
+		"1.13"
+	],
+	"relationships" : [],
+	"game_custom_data" : {
+		"multiplayer_synchronized" : false
+	}
+}

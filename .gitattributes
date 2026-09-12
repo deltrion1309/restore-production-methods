@@ -1,0 +1,11 @@
+# Paradox script and localization files are UTF-8 (localization requires a BOM).
+# Keep them byte-exact: never let git rewrite line endings or strip the BOM.
+*.txt    -text
+*.yml    -text
+*.gui    -text
+*.json   -text
+
+# Binary assets
+*.png    binary
+*.dds    binary
+*.tga    binary

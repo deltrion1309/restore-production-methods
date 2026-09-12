@@ -1,0 +1,33 @@
+namespace = rpm_events
+
+###############################################################################
+# rpm_events.1 - the post-war summary
+#
+# Fired once the player holds snapshotted states again. The restore buttons
+# land here in the next iteration; for now the event reports what the rebel AI
+# changed and the building-level snapshot is kept so the restores can use it.
+###############################################################################
+rpm_events.1 = {
+	type = country_event
+	placement = ROOT
+
+	title = rpm_events.1.t
+	desc = rpm_events.1.d
+	flavor = rpm_events.1.f
+
+	event_image = {
+		video = "unspecific_gears_pistons"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	duration = 3
+
+	option = {
+		name = rpm_events.1.a
+		default_option = yes
+		rpm_mark_states_reported = yes
+	}
+}

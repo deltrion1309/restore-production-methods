@@ -1,0 +1,44 @@
+###############################################################################
+# Restore Production Methods - Phase 1, the pre-war snapshot
+#
+# Taken the moment a revolution or secession breaks out. By the time
+# on_revolution_start / on_secession_start run, the defecting states already
+# belong to the uprising country (vanilla's own Paris Commune branch inside
+# on_revolution_start manipulates that country's territory), so iterating
+# scope:target's states is an exact, generic way to find them - no guessing
+# which states will defect and no hardcoded lists.
+###############################################################################
+
+# Scope: country - the loyalist side. scope:target = the uprising country.
+rpm_take_snapshot = {
+	save_scope_as = rpm_loyalist
+
+	scope:target ?= {
+		every_scope_state = {
+			rpm_snapshot_state = yes
+		}
+	}
+}
+
+# Scope: state - one defecting state. scope:rpm_loyalist must be set.
+rpm_snapshot_state = {
+	set_variable = { name = rpm_original_owner value = scope:rpm_loyalist }
+	set_variable = rpm_pending
+
+	# Every building that exists right now, whatever its type. Modded building
+	# types are covered for free - nothing here names a building.
+	every_scope_building = {
+		set_variable = { name = rpm_snap_level value = level }
+	}
+}
+
+# Scope: state - forget a state entirely (used after the player is done with it).
+rpm_clear_state_snapshot = {
+	remove_variable = rpm_pending
+	remove_variable = rpm_reported
+	remove_variable = rpm_original_owner
+
+	every_scope_building = {
+		remove_variable = rpm_snap_level
+	}
+}

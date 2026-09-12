@@ -1,0 +1,25 @@
+###############################################################################
+# Restore Production Methods - shared conditions
+###############################################################################
+
+# Scope: state
+# A state that was snapshotted when it defected and has not been reported on yet.
+rpm_state_is_snapshotted = {
+	has_variable = rpm_pending
+}
+
+# Scope: state
+# A snapshotted state that is back in the hands of the country it defected from.
+# Comparing against the state's own owner keeps this self-contained, and means a
+# third country conquering the state does not trip the summary.
+rpm_state_is_returned = {
+	has_variable = rpm_pending
+	var:rpm_original_owner ?= owner
+}
+
+# Scope: country
+rpm_has_returned_states = {
+	any_scope_state = {
+		rpm_state_is_returned = yes
+	}
+}
