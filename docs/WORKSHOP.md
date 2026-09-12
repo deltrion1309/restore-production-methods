@@ -70,10 +70,13 @@ Utilities, Gameplay, 1.13
 rebels disturbed in red, the ones set right in green. Regenerate with
 `python dev/make_thumbnail.py --only states` and copy it to the root.
 
-## Screenshots still needed
+## Listing image
 
-In-game captures — these cannot be produced outside the game:
+`docs/workshop-banner.png` — 1280×720, the same design as the thumbnail with room for the pitch.
+Regenerate with `python dev/make_thumbnail.py --only banner`.
 
-1. The summary event as it appears after winning a civil war, with the counters filled in.
-2. A building panel before and after a production method restore, same state, same building.
-3. The diagnostics panel (`event rpm_events.9`) — optional, shows the mod is debuggable.
+## Screenshots, if you ever want them
+
+Not required — the banner carries the listing on its own. If in-game captures are wanted later,
+the ones worth having are the summary event with its counters filled in, and a building panel
+before and after a production method restore.
