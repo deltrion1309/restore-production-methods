@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Restore Production Methods - on_action hooks
 #
 # Vanilla on_actions are extended additively, using the pattern documented in

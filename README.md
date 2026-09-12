@@ -23,13 +23,18 @@ Early development. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the desi
 
 | Phase | Feature | Status |
 |-------|---------------------------------|--------------------------|
-| 1     | Pre-war snapshot                | implemented, untested    |
+| 1     | Pre-war snapshot                | implemented, hooks verified in-game |
 | 2     | Post-war summary event          | implemented, untested    |
-| 3     | Restore actions                 | not started              |
+| 3     | Restore actions                 | generated, not wired to the UI yet |
 
-Phase 1 and 2 currently track **building levels** only. The production-method half of the
-snapshot is blocked on one engine question — see the "PM identity problem" in
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Production methods **and** building levels are both snapshotted. The per-building script is
+generated from the game's own data by `dev/generate_pm_script.py` — see
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for why, and re-run it after a game patch or when
+you change your mod set:
+
+```powershell
+python dev/generate_pm_script.py --source "D:\SteamLibrary\steamapps\common\Victoria 3\game"
+```
 
 ## Compatibility
 
@@ -44,13 +49,19 @@ snapshot is blocked on one engine question — see the "PM identity problem" in
 The repository root *is* the mod root, so it can be linked straight into the game's mod folder.
 
 ```powershell
-# From the repo root, once, in an elevated PowerShell:
+# From the repo root, with Victoria 3 and the Paradox launcher closed:
 .\dev\deploy.ps1
 ```
 
 That creates a directory junction at
-`%USERPROFILE%\Documents\Paradox Interactive\Victoria 3\mod\restore-production-methods`
-pointing at your working copy, so edits are live without copying anything.
+`%USERPROFILE%\Documents\Paradox Interactive\Victoria 3\mod\Restore Production Methods`
+pointing at your working copy, so edits are live without copying anything. If a real folder is
+already there it is moved aside to `...bak` rather than deleted. Pass `-ModFolderName` if the
+launcher knows the mod by a different name.
+
+Then open the launcher, add **Restore Production Methods** to a playset, enable it, and play.
+Do not keep a second copy of these files under the mod folder — two copies drift apart, and the
+game will happily load the stale one.
 
 See [dev/README.md](dev/README.md) for the test loop.
 

@@ -1,4 +1,4 @@
-namespace = rpm_events
+﻿namespace = rpm_events
 
 ###############################################################################
 # rpm_events.1 - the post-war summary

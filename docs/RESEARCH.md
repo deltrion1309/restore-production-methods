@@ -113,6 +113,35 @@ Append a format specifier for integers: `.GetValue|0]`.
 target**, i.e. a scope. This matters for the production-method snapshot: storing methods in a
 list is only possible if a production method is reachable as a scope from a building.
 
+## 8. Verified in-game (first test run, 1.13, mod-only playset)
+
+The mod loaded (`NAMESPACE > 'rpm_events' is set to #1970000` in `game.log`) and every file
+parsed. What the run proved:
+
+* The hooks work. `rpm_take_snapshot` ran from `on_revolution_start` and
+  `every_scope_building` iterated the real buildings of the defecting states - the errors below
+  name them individually (Iron Mines, Barracks, Conscription Center, ...).
+* **Building scopes cannot store variables**, despite `event_scopes.log` listing
+  `building: Stores Variables: yes`:
+  `Error: set_variable effect [ This scope doesn't support variables. Scope: Building Iron Mines ]`
+  The same for `has_variable`. The generated log describes the scope *type*; the running game
+  disagrees about the instances.
+* Paradox wants **UTF-8 with BOM for script files**, not only localization:
+  `File 'common/scripted_effects/rpm_snapshot_effects.txt' should be in utf8-bom encoding`.
+* Nothing else in the mod produced an error - the on_action chaining, `save_temporary_scope_value_as`
+  with a nested value block, and comparing `level` against a variable all parsed and ran.
+
+## 9. There is no production_method scope
+
+`event_scopes.log` lists every scope type the game has. The building-related ones are `building`,
+`building_type` and `building_group`. There is **no** `production_method` or
+`production_method_group` scope, which rules out storing active methods as scopes in a variable
+list. Combined with §8 this forces the generated-script approach described in ARCHITECTURE.md.
+
+Triggers confirmed available from `triggers_l_english.yml`: `has_building` (state, takes a
+building type), `is_building_type` (building), `has_active_production_method` (building),
+`is_production_method_active` (country/state, takes building type + method).
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)

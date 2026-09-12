@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Restore Production Methods - Phase 1, the pre-war snapshot
 #
 # Taken the moment a revolution or secession breaks out. By the time
@@ -7,6 +7,10 @@
 # on_revolution_start manipulates that country's territory), so iterating
 # scope:target's states is an exact, generic way to find them - no guessing
 # which states will defect and no hardcoded lists.
+#
+# The per-building half of the snapshot lives in rpm_generated_effects.txt,
+# because building scopes cannot store variables and a building's production
+# methods cannot be iterated in script. See docs/ARCHITECTURE.md.
 ###############################################################################
 
 # Scope: country - the loyalist side. scope:target = the uprising country.
@@ -25,20 +29,14 @@ rpm_snapshot_state = {
 	set_variable = { name = rpm_original_owner value = scope:rpm_loyalist }
 	set_variable = rpm_pending
 
-	# Every building that exists right now, whatever its type. Modded building
-	# types are covered for free - nothing here names a building.
-	every_scope_building = {
-		set_variable = { name = rpm_snap_level value = level }
-	}
+	rpm_generated_snapshot_state = yes
 }
 
-# Scope: state - forget a state entirely (used after the player is done with it).
+# Scope: state - forget a state entirely.
 rpm_clear_state_snapshot = {
 	remove_variable = rpm_pending
 	remove_variable = rpm_reported
 	remove_variable = rpm_original_owner
 
-	every_scope_building = {
-		remove_variable = rpm_snap_level
-	}
+	rpm_generated_clear_state = yes
 }

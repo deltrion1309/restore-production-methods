@@ -6,6 +6,7 @@ insert_final_newline = true
 charset = utf-8
 indent_style = tab
 
-# Paradox localization files must be UTF-8 with BOM or the game ignores them.
-[*.yml]
+# Paradox wants UTF-8 with BOM for script files as well as localization - without
+# it the game logs "should be in utf8-bom encoding" for every file.
+[*.{yml,txt}]
 charset = utf-8-bom

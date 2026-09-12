@@ -22,43 +22,62 @@
 * **AI-built buildings are never demolished.** Buildings that did not exist in the snapshot are
   listed in the summary and otherwise left alone.
 * **Restore actions are global per category** — they act on all regained states at once.
+* **Human players only.** Snapshots are taken only when the country losing the states is a
+  player. Snapshotting every building of every AI country in every civil war would bloat saves
+  and cost monthly script time for no benefit.
+* **The player as rebel is out of scope.** Nothing is snapshotted when the player is the
+  seceding side; the mod exists to help the loyalist put things back.
+* **English only for now, translation-ready.** No player-facing string is ever written into
+  script — everything goes through localization keys in a single `rpm_` namespace, so adding a
+  language later is dropping in one more `.yml` file.
 
-## The PM identity problem
+## The PM identity problem - settled
 
-This is the one thing the whole design hinges on.
+This was the question the whole design hung on. The game's own generated
+`event_scopes.log` settles it: the complete list of scope types contains `building`,
+`building_type` and `building_group`, and **no `production_method` scope at all**. There is
+therefore no way to capture "whichever method is active" as a value - every read
+(`has_active_production_method`, `is_production_method_active`) must name the method.
 
-Restoring a production method is easy: `activate_production_method = { building_type = X
-production_method = Y }`. *Reading* which method is currently active is the problem — the only
-read primitives found so far (`has_active_production_method`, `is_production_method_active`)
-require you to **name** the method you are asking about. If there is no way to enumerate a
-building's production method groups, a snapshot cannot be taken generically.
+An in-game test settled a second question at the same time, and less pleasantly.
+`event_scopes.log` lists `building` as `Stores Variables: yes`, but the running game disagrees:
 
-Two candidate plans:
+```
+Error: set_variable effect [ This scope doesn't support variables. Scope: Building Iron Mines ]
+```
 
-### Plan A — fully generic (preferred)
+So nothing can be stored on a building either. Anything per-building has to be keyed by building
+*type*, and variable names in Paradox script are literals - they cannot be composed at runtime.
 
-The wiki's Scope page indicates `production_method` is a real **scope type**. If a building scope
-exposes its active production methods as a list (or each group as a link), then the snapshot is
-simply a variable list of production-method scopes stored on the building, and restoration feeds
-those scopes straight back into `activate_production_method`. No hardcoded names anywhere, and
-modded production methods work for free. This satisfies the "avoid hardcoded arrays" directive
-literally.
+### What follows: generated script
 
-### Plan B — generated script (fallback)
+`dev/generate_pm_script.py` reads `common/buildings` and `common/production_method_groups` from
+any number of source folders - the game folder first, then each mod folder, later ones winning by
+file name exactly as the game resolves load order - and emits
+`common/scripted_effects/rpm_generated_effects.txt`: roughly 650 KiB covering 115 building types
+and 424 production methods.
 
-If Plan A is not supported, a small build-time generator (Python, in `dev/`) reads
-`common/production_method_groups/` and `common/buildings/` from the installed game and emits
-`common/scripted_effects/rpm_generated_*.txt`: per building type, an if/else chain that maps the
-active method of each group to a numeric index, plus the inverse chain for restoration.
+This is not hardcoding in the sense the requirements warn about. Nothing is typed by hand and
+nothing is frozen to vanilla: point the generator at your mod set and modded buildings and modded
+production methods are covered exactly like vanilla ones. The cost is that the file must be
+regenerated after a game patch or a change of mod set, which is one command.
 
-This is still not *hardcoded* in the maintenance sense — the generator is re-run against each new
-patch (and can be pointed at a modded game folder) — but the emitted files are large and must be
-regenerated when Paradox adds production methods. It is strictly the second choice.
+### Data model
 
-**Next step:** settle this from the game-generated script reference logs
-(`Documents/Paradox Interactive/Victoria 3/logs/event_scopes.log`, `effects.log`, `triggers.log`),
-which the wiki names as the authoritative list of scopes, links and lists. These only exist after
-the game has been run with the `-debug_mode` launch option.
+A state holds at most one building of each type, so `(state, building type)` is a unique key and
+the whole snapshot fits in state variables:
+
+| Variable | Scope | Meaning |
+|---|---|---|
+| `rpm_original_owner` | state | the country it defected from |
+| `rpm_pending` | state | snapshot taken, not yet reported |
+| `rpm_reported` | state | reported, snapshot kept for the restores |
+| `rpm_lvl_<building_type>` | state | that building's level at the snapshot |
+| `rpm_pm<N>_<building_type>` | state | index of the active method in the type's Nth group |
+| `rpm_sum_*` | country | the summary counters the event text prints |
+
+Four generated effects operate on it: `rpm_generated_snapshot_state`,
+`rpm_generated_diff_state`, `rpm_generated_restore_pms_state` and `rpm_generated_clear_state`.
 
 ## Hooks
 
@@ -86,23 +105,7 @@ Stored as script variables so everything lives in the save game.
 
 On each defecting **state**:
 
-| Variable | Meaning |
-|---|---|
-| `rpm_original_owner` | country scope — who the state belonged to before the revolt |
-| `rpm_lost_date` | when it defected, for the summary text |
-| `rpm_pending` | flag: snapshot taken, state not yet returned |
-
-On each **building** in those states:
-
-| Variable | Meaning |
-|---|---|
-| `rpm_snap_level` | building level at the moment of defection |
-| `rpm_snap_pms` | variable list of the active production methods (Plan A) |
-
-Buildings are not destroyed when a state changes owner, so per-building variables are the natural
-home for the snapshot — **pending verification that building scope supports variables.**
-
-Clean-up: when a restore is applied, or when the player explicitly dismisses the summary, the
+See the data model table above. Clean-up: when a restore is applied, or when the player explicitly dismisses the summary, the
 snapshot variables for those states are cleared so repeated revolts do not accumulate stale data
 in the save.
 
@@ -132,9 +135,11 @@ the `rpm_events` namespace.
 
 ## Open questions
 
-1. Does building scope expose its active production methods as scopes (Plan A vs Plan B)?
-2. Does building scope support `set_variable` / variable lists?
-3. Should a *player-led* revolution (the player is the rebel and keeps the states) also snapshot?
-   Currently assumed no — the snapshot only runs for the loyalist side.
-4. Should the mod act for AI countries too, or only for the human player? Currently assumed
-   player only, to keep save-game size and performance sane.
+1. The exact parameter spelling of `add_building_level`. The effect exists and takes a signed
+   level delta, but the wiki's generated effect list is truncated before the entry and no vanilla
+   file uses it. The generated restore currently assumes `type` / `level`; the error log will say
+   if that is wrong.
+2. Whether state variables survive the state changing owner twice. The snapshot is written while
+   the rebel holds the state and read after it comes back, so this is load-bearing. The first
+   in-game run confirmed the hooks fire and the effects run; it did not confirm the round trip,
+   because the storage was on buildings and failed.
