@@ -18402,6 +18402,788 @@ rpm_generated_diff_state = {
 	}
 }
 
+# Scope: state. Shrink Barracks back to the snapshot.
+rpm_generated_restore_levels_army_state = {
+	if = {
+		limit = {
+			has_building = building_barrack
+			has_variable = rpm_lvl_building_barrack
+			b:building_barrack.level > var:rpm_lvl_building_barrack
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_barrack }
+		remove_building = building_barrack
+		create_building = {
+			building = "building_barrack"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+}
+
+# Scope: state. Shrink Conscription Centres back to the snapshot.
+rpm_generated_restore_levels_conscription_state = {
+	if = {
+		limit = {
+			has_building = building_conscription_center
+			has_variable = rpm_lvl_building_conscription_center
+			b:building_conscription_center.level > var:rpm_lvl_building_conscription_center
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_conscription_center }
+		remove_building = building_conscription_center
+		create_building = {
+			building = "building_conscription_center"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+}
+
+# Scope: state. Shrink every other expandable building back to the snapshot.
+rpm_generated_restore_levels_general_state = {
+	if = {
+		limit = {
+			has_building = building_arms_industry
+			has_variable = rpm_lvl_building_arms_industry
+			b:building_arms_industry.level > var:rpm_lvl_building_arms_industry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_arms_industry }
+		remove_building = building_arms_industry
+		create_building = {
+			building = "building_arms_industry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_art_academy
+			has_variable = rpm_lvl_building_art_academy
+			b:building_art_academy.level > var:rpm_lvl_building_art_academy
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_art_academy }
+		remove_building = building_art_academy
+		create_building = {
+			building = "building_art_academy"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_artillery_foundry
+			has_variable = rpm_lvl_building_artillery_foundry
+			b:building_artillery_foundry.level > var:rpm_lvl_building_artillery_foundry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_artillery_foundry }
+		remove_building = building_artillery_foundry
+		create_building = {
+			building = "building_artillery_foundry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_automotive_industry
+			has_variable = rpm_lvl_building_automotive_industry
+			b:building_automotive_industry.level > var:rpm_lvl_building_automotive_industry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_automotive_industry }
+		remove_building = building_automotive_industry
+		create_building = {
+			building = "building_automotive_industry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_banana_plantation
+			has_variable = rpm_lvl_building_banana_plantation
+			b:building_banana_plantation.level > var:rpm_lvl_building_banana_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_banana_plantation }
+		remove_building = building_banana_plantation
+		create_building = {
+			building = "building_banana_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_chemical_plant
+			has_variable = rpm_lvl_building_chemical_plant
+			b:building_chemical_plant.level > var:rpm_lvl_building_chemical_plant
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_chemical_plant }
+		remove_building = building_chemical_plant
+		create_building = {
+			building = "building_chemical_plant"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_coal_mine
+			has_variable = rpm_lvl_building_coal_mine
+			b:building_coal_mine.level > var:rpm_lvl_building_coal_mine
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_coal_mine }
+		remove_building = building_coal_mine
+		create_building = {
+			building = "building_coal_mine"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_coffee_plantation
+			has_variable = rpm_lvl_building_coffee_plantation
+			b:building_coffee_plantation.level > var:rpm_lvl_building_coffee_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_coffee_plantation }
+		remove_building = building_coffee_plantation
+		create_building = {
+			building = "building_coffee_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_construction_sector
+			has_variable = rpm_lvl_building_construction_sector
+			b:building_construction_sector.level > var:rpm_lvl_building_construction_sector
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_construction_sector }
+		remove_building = building_construction_sector
+		create_building = {
+			building = "building_construction_sector"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_cotton_plantation
+			has_variable = rpm_lvl_building_cotton_plantation
+			b:building_cotton_plantation.level > var:rpm_lvl_building_cotton_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_cotton_plantation }
+		remove_building = building_cotton_plantation
+		create_building = {
+			building = "building_cotton_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_dye_plantation
+			has_variable = rpm_lvl_building_dye_plantation
+			b:building_dye_plantation.level > var:rpm_lvl_building_dye_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_dye_plantation }
+		remove_building = building_dye_plantation
+		create_building = {
+			building = "building_dye_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_electrics_industry
+			has_variable = rpm_lvl_building_electrics_industry
+			b:building_electrics_industry.level > var:rpm_lvl_building_electrics_industry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_electrics_industry }
+		remove_building = building_electrics_industry
+		create_building = {
+			building = "building_electrics_industry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_explosives_factory
+			has_variable = rpm_lvl_building_explosives_factory
+			b:building_explosives_factory.level > var:rpm_lvl_building_explosives_factory
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_explosives_factory }
+		remove_building = building_explosives_factory
+		create_building = {
+			building = "building_explosives_factory"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_fishing_wharf
+			has_variable = rpm_lvl_building_fishing_wharf
+			b:building_fishing_wharf.level > var:rpm_lvl_building_fishing_wharf
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_fishing_wharf }
+		remove_building = building_fishing_wharf
+		create_building = {
+			building = "building_fishing_wharf"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_food_industry
+			has_variable = rpm_lvl_building_food_industry
+			b:building_food_industry.level > var:rpm_lvl_building_food_industry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_food_industry }
+		remove_building = building_food_industry
+		create_building = {
+			building = "building_food_industry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_furniture_manufactory
+			has_variable = rpm_lvl_building_furniture_manufactory
+			b:building_furniture_manufactory.level > var:rpm_lvl_building_furniture_manufactory
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_furniture_manufactory }
+		remove_building = building_furniture_manufactory
+		create_building = {
+			building = "building_furniture_manufactory"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_glassworks
+			has_variable = rpm_lvl_building_glassworks
+			b:building_glassworks.level > var:rpm_lvl_building_glassworks
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_glassworks }
+		remove_building = building_glassworks
+		create_building = {
+			building = "building_glassworks"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_gold_mine
+			has_variable = rpm_lvl_building_gold_mine
+			b:building_gold_mine.level > var:rpm_lvl_building_gold_mine
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_gold_mine }
+		remove_building = building_gold_mine
+		create_building = {
+			building = "building_gold_mine"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_government_administration
+			has_variable = rpm_lvl_building_government_administration
+			b:building_government_administration.level > var:rpm_lvl_building_government_administration
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_government_administration }
+		remove_building = building_government_administration
+		create_building = {
+			building = "building_government_administration"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_iron_mine
+			has_variable = rpm_lvl_building_iron_mine
+			b:building_iron_mine.level > var:rpm_lvl_building_iron_mine
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_iron_mine }
+		remove_building = building_iron_mine
+		create_building = {
+			building = "building_iron_mine"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_lead_mine
+			has_variable = rpm_lvl_building_lead_mine
+			b:building_lead_mine.level > var:rpm_lvl_building_lead_mine
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_lead_mine }
+		remove_building = building_lead_mine
+		create_building = {
+			building = "building_lead_mine"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_livestock_ranch
+			has_variable = rpm_lvl_building_livestock_ranch
+			b:building_livestock_ranch.level > var:rpm_lvl_building_livestock_ranch
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_livestock_ranch }
+		remove_building = building_livestock_ranch
+		create_building = {
+			building = "building_livestock_ranch"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_logging_camp
+			has_variable = rpm_lvl_building_logging_camp
+			b:building_logging_camp.level > var:rpm_lvl_building_logging_camp
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_logging_camp }
+		remove_building = building_logging_camp
+		create_building = {
+			building = "building_logging_camp"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_maize_farm
+			has_variable = rpm_lvl_building_maize_farm
+			b:building_maize_farm.level > var:rpm_lvl_building_maize_farm
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_maize_farm }
+		remove_building = building_maize_farm
+		create_building = {
+			building = "building_maize_farm"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_millet_farm
+			has_variable = rpm_lvl_building_millet_farm
+			b:building_millet_farm.level > var:rpm_lvl_building_millet_farm
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_millet_farm }
+		remove_building = building_millet_farm
+		create_building = {
+			building = "building_millet_farm"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_motor_industry
+			has_variable = rpm_lvl_building_motor_industry
+			b:building_motor_industry.level > var:rpm_lvl_building_motor_industry
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_motor_industry }
+		remove_building = building_motor_industry
+		create_building = {
+			building = "building_motor_industry"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_munition_plant
+			has_variable = rpm_lvl_building_munition_plant
+			b:building_munition_plant.level > var:rpm_lvl_building_munition_plant
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_munition_plant }
+		remove_building = building_munition_plant
+		create_building = {
+			building = "building_munition_plant"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_naval_administration
+			has_variable = rpm_lvl_building_naval_administration
+			b:building_naval_administration.level > var:rpm_lvl_building_naval_administration
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_naval_administration }
+		remove_building = building_naval_administration
+		create_building = {
+			building = "building_naval_administration"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_naval_fortification
+			has_variable = rpm_lvl_building_naval_fortification
+			b:building_naval_fortification.level > var:rpm_lvl_building_naval_fortification
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_naval_fortification }
+		remove_building = building_naval_fortification
+		create_building = {
+			building = "building_naval_fortification"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_oil_rig
+			has_variable = rpm_lvl_building_oil_rig
+			b:building_oil_rig.level > var:rpm_lvl_building_oil_rig
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_oil_rig }
+		remove_building = building_oil_rig
+		create_building = {
+			building = "building_oil_rig"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_opium_plantation
+			has_variable = rpm_lvl_building_opium_plantation
+			b:building_opium_plantation.level > var:rpm_lvl_building_opium_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_opium_plantation }
+		remove_building = building_opium_plantation
+		create_building = {
+			building = "building_opium_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_paper_mill
+			has_variable = rpm_lvl_building_paper_mill
+			b:building_paper_mill.level > var:rpm_lvl_building_paper_mill
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_paper_mill }
+		remove_building = building_paper_mill
+		create_building = {
+			building = "building_paper_mill"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_port
+			has_variable = rpm_lvl_building_port
+			b:building_port.level > var:rpm_lvl_building_port
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_port }
+		remove_building = building_port
+		create_building = {
+			building = "building_port"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_power_plant
+			has_variable = rpm_lvl_building_power_plant
+			b:building_power_plant.level > var:rpm_lvl_building_power_plant
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_power_plant }
+		remove_building = building_power_plant
+		create_building = {
+			building = "building_power_plant"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_railway
+			has_variable = rpm_lvl_building_railway
+			b:building_railway.level > var:rpm_lvl_building_railway
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_railway }
+		remove_building = building_railway
+		create_building = {
+			building = "building_railway"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_rice_farm
+			has_variable = rpm_lvl_building_rice_farm
+			b:building_rice_farm.level > var:rpm_lvl_building_rice_farm
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_rice_farm }
+		remove_building = building_rice_farm
+		create_building = {
+			building = "building_rice_farm"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_rubber_plantation
+			has_variable = rpm_lvl_building_rubber_plantation
+			b:building_rubber_plantation.level > var:rpm_lvl_building_rubber_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_rubber_plantation }
+		remove_building = building_rubber_plantation
+		create_building = {
+			building = "building_rubber_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_rye_farm
+			has_variable = rpm_lvl_building_rye_farm
+			b:building_rye_farm.level > var:rpm_lvl_building_rye_farm
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_rye_farm }
+		remove_building = building_rye_farm
+		create_building = {
+			building = "building_rye_farm"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_shipyard
+			has_variable = rpm_lvl_building_shipyard
+			b:building_shipyard.level > var:rpm_lvl_building_shipyard
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_shipyard }
+		remove_building = building_shipyard
+		create_building = {
+			building = "building_shipyard"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_silk_plantation
+			has_variable = rpm_lvl_building_silk_plantation
+			b:building_silk_plantation.level > var:rpm_lvl_building_silk_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_silk_plantation }
+		remove_building = building_silk_plantation
+		create_building = {
+			building = "building_silk_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_steel_mill
+			has_variable = rpm_lvl_building_steel_mill
+			b:building_steel_mill.level > var:rpm_lvl_building_steel_mill
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_steel_mill }
+		remove_building = building_steel_mill
+		create_building = {
+			building = "building_steel_mill"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_sugar_plantation
+			has_variable = rpm_lvl_building_sugar_plantation
+			b:building_sugar_plantation.level > var:rpm_lvl_building_sugar_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_sugar_plantation }
+		remove_building = building_sugar_plantation
+		create_building = {
+			building = "building_sugar_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_sulfur_mine
+			has_variable = rpm_lvl_building_sulfur_mine
+			b:building_sulfur_mine.level > var:rpm_lvl_building_sulfur_mine
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_sulfur_mine }
+		remove_building = building_sulfur_mine
+		create_building = {
+			building = "building_sulfur_mine"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_synthetics_plant
+			has_variable = rpm_lvl_building_synthetics_plant
+			b:building_synthetics_plant.level > var:rpm_lvl_building_synthetics_plant
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_synthetics_plant }
+		remove_building = building_synthetics_plant
+		create_building = {
+			building = "building_synthetics_plant"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_tea_plantation
+			has_variable = rpm_lvl_building_tea_plantation
+			b:building_tea_plantation.level > var:rpm_lvl_building_tea_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_tea_plantation }
+		remove_building = building_tea_plantation
+		create_building = {
+			building = "building_tea_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_textile_mill
+			has_variable = rpm_lvl_building_textile_mill
+			b:building_textile_mill.level > var:rpm_lvl_building_textile_mill
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_textile_mill }
+		remove_building = building_textile_mill
+		create_building = {
+			building = "building_textile_mill"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_tobacco_plantation
+			has_variable = rpm_lvl_building_tobacco_plantation
+			b:building_tobacco_plantation.level > var:rpm_lvl_building_tobacco_plantation
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_tobacco_plantation }
+		remove_building = building_tobacco_plantation
+		create_building = {
+			building = "building_tobacco_plantation"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_tooling_workshop
+			has_variable = rpm_lvl_building_tooling_workshop
+			b:building_tooling_workshop.level > var:rpm_lvl_building_tooling_workshop
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_tooling_workshop }
+		remove_building = building_tooling_workshop
+		create_building = {
+			building = "building_tooling_workshop"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_trade_center
+			has_variable = rpm_lvl_building_trade_center
+			b:building_trade_center.level > var:rpm_lvl_building_trade_center
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_trade_center }
+		remove_building = building_trade_center
+		create_building = {
+			building = "building_trade_center"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_university
+			has_variable = rpm_lvl_building_university
+			b:building_university.level > var:rpm_lvl_building_university
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_university }
+		remove_building = building_university
+		create_building = {
+			building = "building_university"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_vineyard
+			has_variable = rpm_lvl_building_vineyard
+			b:building_vineyard.level > var:rpm_lvl_building_vineyard
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_vineyard }
+		remove_building = building_vineyard
+		create_building = {
+			building = "building_vineyard"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_whaling_station
+			has_variable = rpm_lvl_building_whaling_station
+			b:building_whaling_station.level > var:rpm_lvl_building_whaling_station
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_whaling_station }
+		remove_building = building_whaling_station
+		create_building = {
+			building = "building_whaling_station"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+	if = {
+		limit = {
+			has_building = building_wheat_farm
+			has_variable = rpm_lvl_building_wheat_farm
+			b:building_wheat_farm.level > var:rpm_lvl_building_wheat_farm
+		}
+		save_temporary_scope_value_as = { name = rpm_target_level value = var:rpm_lvl_building_wheat_farm }
+		remove_building = building_wheat_farm
+		create_building = {
+			building = "building_wheat_farm"
+			level = scope:rpm_target_level
+			reserves = 1
+		}
+	}
+}
+
 # Scope: state. Forget the snapshot.
 rpm_generated_clear_state = {
 	remove_variable = rpm_lvl_building_angkor_wat

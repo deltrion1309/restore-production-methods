@@ -25,8 +25,9 @@ Early development. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the desi
 |-------|---------------------------------|--------------------------|
 | 1     | Pre-war snapshot                | implemented, loads clean in-game |
 | 2     | Post-war summary event          | implemented, loads clean in-game |
-| 3     | Restore production methods      | implemented, untested    |
-| 3     | Restore building levels / army  | blocked on one effect spelling |
+| 3     | Restore production methods      | implemented              |
+| 3     | Restore building levels         | implemented, untested    |
+| 3     | Restore barracks / conscription | implemented, untested    |
 
 Production methods **and** building levels are both snapshotted. The per-building script is
 generated from the game's own data by `dev/generate_pm_script.py` — see

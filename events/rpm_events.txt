@@ -5,6 +5,10 @@
 #
 # Fired once the player holds snapshotted states again.
 #
+# All bookkeeping happens in immediate, not in the on_action that fires this.
+# Paradox documents that an on_action's effect block and the events it fires are
+# separate chains, so a variable written there is not reliably readable here.
+#
 # Every option's work sits inside hidden_effect. Victoria 3 builds an option's
 # tooltip by evaluating its effects without committing the writes, so an effect
 # chain that reads a variable it set in the same pass floods the error log with
@@ -29,17 +33,50 @@ rpm_events.1 = {
 
 	duration = 3
 
+	immediate = {
+		# Only on the first showing - reopening must not reset the counter, or
+		# the cap that stops an endless popup would never be reached.
+		if = {
+			limit = { NOT = { has_variable = rpm_summary_shows } }
+			set_variable = { name = rpm_summary_shows value = 1 }
+		}
+		rpm_build_summary = yes
+	}
+
 	option = {
 		name = rpm_events.1.a
 		hidden_effect = {
 			rpm_restore_pms = yes
-			rpm_build_summary = yes
 			rpm_reopen_summary_or_finish = yes
 		}
 	}
 
 	option = {
 		name = rpm_events.1.b
+		hidden_effect = {
+			rpm_restore_levels_general = yes
+			rpm_reopen_summary_or_finish = yes
+		}
+	}
+
+	option = {
+		name = rpm_events.1.c
+		hidden_effect = {
+			rpm_restore_levels_army = yes
+			rpm_reopen_summary_or_finish = yes
+		}
+	}
+
+	option = {
+		name = rpm_events.1.d
+		hidden_effect = {
+			rpm_restore_levels_conscription = yes
+			rpm_reopen_summary_or_finish = yes
+		}
+	}
+
+	option = {
+		name = rpm_events.1.e
 		default_option = yes
 		hidden_effect = {
 			rpm_mark_states_reported = yes
@@ -50,7 +87,8 @@ rpm_events.1 = {
 ###############################################################################
 # rpm_events.9 - diagnostics
 #
-# Not fired by anything. Open the console in debug mode and run
+# Nothing fires this, which the game notes as "Event rpm_events.9 is orphaned".
+# That is intended: open the console in debug mode and run
 #     event rpm_events.9
 # to see whether snapshots exist and what the mod currently counts, without
 # having to fight a whole civil war first.
@@ -73,17 +111,5 @@ rpm_events.9 = {
 	option = {
 		name = rpm_events.9.a
 		default_option = yes
-	}
-
-	# Runs both candidate spellings of add_building_level with a delta of 0, so
-	# nothing changes and error.log names whichever one is wrong.
-	option = {
-		name = rpm_events.9.b
-		hidden_effect = {
-			capital ?= {
-				rpm_probe_add_building_level_type = yes
-				rpm_probe_add_building_level_building = yes
-			}
-		}
 	}
 }

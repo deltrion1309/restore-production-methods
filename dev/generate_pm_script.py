@@ -149,6 +149,22 @@ def list_field(tokens: list[str], field: str) -> list[str]:
     return []
 
 
+def scalar_field(tokens: list[str], field: str) -> str | None:
+    """Read `field = value` out of a token list, ignoring nested blocks."""
+    depth = 0
+    i = 0
+    while i < len(tokens):
+        tok = tokens[i]
+        if tok == "{":
+            depth += 1
+        elif tok == "}":
+            depth -= 1
+        elif depth == 0 and tok == field and i + 2 < len(tokens) and tokens[i + 1] == "=" and tokens[i + 2] != "{":
+            return tokens[i + 2].strip('"')
+        i += 1
+    return None
+
+
 def collect(roots: list[Path], subdir: str) -> dict[str, list[str]]:
     """
     Read every .txt in <root>/common/<subdir> for each root in order.
@@ -174,11 +190,16 @@ def collect(roots: list[Path], subdir: str) -> dict[str, list[str]]:
 # --------------------------------------------------------------------------- #
 
 
-def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple[str, dict]:
+def emit(
+    buildings: dict[str, list[str]],
+    groups: dict[str, list[str]],
+    building_meta: dict[str, dict],
+) -> tuple[str, dict]:
     snapshot: list[str] = []
     restore_pms: list[str] = []
     diff: list[str] = []
     clear: list[str] = []
+    levels: dict[str, list[str]] = {"army": [], "conscription": [], "general": []}
 
     stats = {"n_buildings": 0, "n_methods": 0, "max_groups": 0}
     methods_seen: set[str] = set()
@@ -323,6 +344,43 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
             + "\n\t}"
         )
 
+        # ---- restore building levels -------------------------------------- #
+        # add_building_level does not exist in 1.13 (the game logs "Unknown
+        # effect add_building_level"), despite shipping a tooltip key for it.
+        # The only way to resize is vanilla's own idiom: remove the building and
+        # create it again at the wanted level. That resets its production
+        # methods, which is why every level restore reapplies the production
+        # method snapshot afterwards.
+        #
+        # Only shrinking is ever done. The mod undoes the rebel AI's expansions;
+        # it does not rebuild what the AI tore down, which would be a free gift.
+        meta = building_meta.get(building, {})
+        bucket = None
+        if meta.get("building_group") == "bg_army":
+            bucket = "army"
+        elif meta.get("building_group") == "bg_conscription":
+            bucket = "conscription"
+        elif meta.get("expandable") != "no":
+            bucket = "general"
+
+        if bucket:
+            levels[bucket].append(
+                f"\tif = {{\n"
+                f"\t\tlimit = {{\n"
+                f"\t\t\thas_building = {building}\n"
+                f"\t\t\thas_variable = rpm_lvl_{building}\n"
+                f"\t\t\tb:{building}.level > var:rpm_lvl_{building}\n"
+                f"\t\t}}\n"
+                f"\t\tsave_temporary_scope_value_as = {{ name = rpm_target_level value = var:rpm_lvl_{building} }}\n"
+                f"\t\tremove_building = {building}\n"
+                f"\t\tcreate_building = {{\n"
+                f"\t\t\tbuilding = \"{building}\"\n"
+                f"\t\t\tlevel = scope:rpm_target_level\n"
+                f"\t\t\treserves = 1\n"
+                f"\t\t}}\n"
+                f"\t}}"
+            )
+
         # ---- clear -------------------------------------------------------- #
         clear_body = [f"\tremove_variable = rpm_lvl_{building}"]
         for index in range(len(group_names)):
@@ -348,6 +406,21 @@ def emit(buildings: dict[str, list[str]], groups: dict[str, list[str]]) -> tuple
         "# Count what the rebel AI changed, into country variables.",
         "rpm_generated_diff_state = {",
         "\n".join(diff),
+        "}",
+        "",
+        "# Scope: state. Shrink Barracks back to the snapshot.",
+        "rpm_generated_restore_levels_army_state = {",
+        "\n".join(levels["army"]) or "\t# no building types in bg_army",
+        "}",
+        "",
+        "# Scope: state. Shrink Conscription Centres back to the snapshot.",
+        "rpm_generated_restore_levels_conscription_state = {",
+        "\n".join(levels["conscription"]) or "\t# no building types in bg_conscription",
+        "}",
+        "",
+        "# Scope: state. Shrink every other expandable building back to the snapshot.",
+        "rpm_generated_restore_levels_general_state = {",
+        "\n".join(levels["general"]) or "\t# no expandable building types",
         "}",
         "",
         "# Scope: state. Forget the snapshot.",
@@ -393,8 +466,15 @@ def main() -> int:
         name: list_field(tokens, "production_methods")
         for name, tokens in groups_raw.items()
     }
+    building_meta = {
+        name: {
+            "building_group": scalar_field(tokens, "building_group"),
+            "expandable": scalar_field(tokens, "expandable"),
+        }
+        for name, tokens in buildings_raw.items()
+    }
 
-    body, stats = emit(buildings, groups)
+    body, stats = emit(buildings, groups, building_meta)
     header = GENERATED_HEADER.format(
         sources="\n".join(f"#   {r}" for r in roots),
         n_buildings=stats["n_buildings"],

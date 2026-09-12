@@ -171,11 +171,34 @@ Two lessons, both applied:
 Reading an unset variable is an **error** in Victoria 3, not a silent zero, so every `var:` read
 in a trigger is paired with `has_variable`.
 
-## 11. Effect parameters are not validated at load
+## 11. add_building_level does not exist
 
-Neither spelling in `rpm_probe_effects.txt` produced a load-time error, so Paradox only validates
-an effect's parameters when the effect actually executes. The probe has to be *run* to answer the
-`add_building_level` question - loading the mod is not enough.
+The probe answered it, and the answer was neither spelling:
+
+```
+Unknown effect add_building_level at common/scripted_effects/rpm_probe_effects.txt:17
+Unknown effect add_building_level at common/scripted_effects/rpm_probe_effects.txt:24
+```
+
+The game ships an `ADD_BUILDING_LEVEL` tooltip key but no such effect in 1.13. Resizing a
+building therefore has to go through vanilla's own idiom - `remove_building` then
+`create_building` at the wanted level - which resets the building's production methods. Levels
+must be restored before methods, and every level restore reapplies the method snapshot.
+
+(These errors are logged at **load**, so effects are validated when the file is parsed. An earlier
+run appeared not to report them only because the error log had rotated and lost its head.)
+
+## 12. An on_action's effect block and the events it fires are separate chains
+
+`_on_actions.md` warns about this and the game enforces it:
+
+```
+Error: change_variable effect [ Variable not of the 'value' scope type. Type: empty ]
+```
+
+A variable written in an on_action's `effect` block is not reliably readable by an event fired in
+the same tick. All of the mod's bookkeeping now lives in the event's `immediate` block; the
+on_action only sets the "summary is open" flag and fires the event.
 
 ## Sources
 

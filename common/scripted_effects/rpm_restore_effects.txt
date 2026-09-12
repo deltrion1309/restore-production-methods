@@ -1,9 +1,14 @@
 ﻿###############################################################################
 # Restore Production Methods - Phase 3, the restore actions
 #
-# Order matters: production methods must be restored AFTER building levels,
-# never before. Any resize that goes through remove_building/create_building
-# resets a building's production methods.
+# add_building_level does not exist in 1.13 - the game logs "Unknown effect
+# add_building_level" even though it ships a tooltip key for it. The only way to
+# resize a building is vanilla's own idiom, remove_building followed by
+# create_building at the wanted level, and that resets the building's production
+# methods.
+#
+# So every level restore reapplies the production method snapshot afterwards.
+# Levels first, methods second - never the other way round.
 ###############################################################################
 
 # Scope: country. Put production methods back to the snapshot in every state
@@ -13,6 +18,35 @@ rpm_restore_pms = {
 		limit = { rpm_state_is_returned = yes }
 		rpm_generated_restore_pms_state = yes
 	}
+}
+
+# Scope: country. Shrink Barracks back to their pre-war level.
+rpm_restore_levels_army = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		rpm_generated_restore_levels_army_state = yes
+	}
+	rpm_restore_pms = yes
+}
+
+# Scope: country. Shrink Conscription Centres back to their pre-war level.
+rpm_restore_levels_conscription = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		rpm_generated_restore_levels_conscription_state = yes
+	}
+	rpm_restore_pms = yes
+}
+
+# Scope: country. Shrink every other expandable building back to its pre-war
+# level, undoing the rebel AI's expansions. Buildings the AI shrank are left
+# alone, and buildings it built from scratch are never demolished.
+rpm_restore_levels_general = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		rpm_generated_restore_levels_general_state = yes
+	}
+	rpm_restore_pms = yes
 }
 
 # Scope: country.
@@ -28,7 +62,6 @@ rpm_reopen_summary_or_finish = {
 
 	if = {
 		limit = {
-			has_variable = rpm_summary_shows
 			var:rpm_summary_shows < rpm_max_summary_shows
 			rpm_has_anything_to_restore = yes
 		}

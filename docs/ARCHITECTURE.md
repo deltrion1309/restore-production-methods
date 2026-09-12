@@ -135,13 +135,12 @@ the `rpm_events` namespace.
 
 ## Open questions
 
-1. The exact parameter spelling of `add_building_level`, which the three level-based restores
-   (building levels, barracks, conscription centres) all need. The effect exists and takes a
-   signed level delta, but no vanilla file uses it and the wiki's generated effect list is
-   truncated before the entry, so `type` vs `building` is a coin flip.
-   `common/scripted_effects/rpm_probe_effects.txt` writes out both spellings with a delta of 0 and
-   the diagnostics event runs them, so the error log names the wrong one. Delete that file once
-   the answer is in.
+1. Whether `remove_building` + `create_building` is safe for every building type it is applied
+   to. `add_building_level` turned out not to exist, so resizing goes through the vanilla
+   demolish-and-rebuild idiom. The generator restricts it to Barracks (`bg_army`), Conscription
+   Centres (`bg_conscription`) and every other building type not marked `expandable = no` - which
+   keeps monuments, canals and subsistence farms out of it - and only ever shrinks. Whether
+   rebuilding loses ownership shares or private investment is untested.
 2. Whether state variables survive the state changing owner twice. The snapshot is written while
    the rebel holds the state and read after it comes back, so this is load-bearing. The first
    in-game run confirmed the hooks fire and the effects run; it did not confirm the round trip,

@@ -60,10 +60,14 @@ rpm_check_returned_states = {
 		NOT = { has_variable = rpm_summary_open }
 		rpm_has_returned_states = yes
 	}
+	# The counting deliberately does NOT happen here. Paradox documents that an
+	# on_action's effect block and the events it fires are separate chains, so a
+	# variable written here is not reliably readable by the event fired in the
+	# same tick - which showed up as "Variable not of the 'value' scope type.
+	# Type: empty". All the mod's bookkeeping is done in the event's immediate
+	# block instead.
 	effect = {
 		set_variable = rpm_summary_open
-		set_variable = { name = rpm_summary_shows value = 1 }
-		rpm_build_summary = yes
 		trigger_event = { id = rpm_events.1 popup = yes }
 	}
 }

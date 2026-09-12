@@ -31,6 +31,14 @@ rpm_has_returned_states = {
 # Is there anything left for the player to put back? This is what stops the
 # summary reopening forever once every restore has been applied.
 rpm_has_anything_to_restore = {
-	has_variable = rpm_sum_pm_changes
-	var:rpm_sum_pm_changes > 0
+	OR = {
+		AND = {
+			has_variable = rpm_sum_pm_changes
+			var:rpm_sum_pm_changes > 0
+		}
+		AND = {
+			has_variable = rpm_sum_buildings_expanded
+			var:rpm_sum_buildings_expanded > 0
+		}
+	}
 }
