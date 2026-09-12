@@ -1,0 +1,41 @@
+﻿###############################################################################
+# Restore Production Methods - Phase 3, the restore actions
+#
+# Order matters: production methods must be restored AFTER building levels,
+# never before. Any resize that goes through remove_building/create_building
+# resets a building's production methods.
+###############################################################################
+
+# Scope: country. Put production methods back to the snapshot in every state
+# that has come back. The per-building-type work is generated.
+rpm_restore_pms = {
+	every_scope_state = {
+		limit = { rpm_state_is_returned = yes }
+		rpm_generated_restore_pms_state = yes
+	}
+}
+
+###############################################################################
+# Diagnostics - only reachable from the debug event (console: event rpm_events.9)
+###############################################################################
+
+# Scope: country
+rpm_debug_count_states = {
+	save_scope_as = rpm_player
+
+	set_variable = { name = rpm_dbg_pending value = 0 }
+	set_variable = { name = rpm_dbg_reported value = 0 }
+
+	every_scope_state = {
+		if = {
+			limit = { has_variable = rpm_pending }
+			scope:rpm_player = { change_variable = { name = rpm_dbg_pending add = 1 } }
+		}
+		if = {
+			limit = { has_variable = rpm_reported }
+			scope:rpm_player = { change_variable = { name = rpm_dbg_reported add = 1 } }
+		}
+	}
+
+	rpm_build_summary = yes
+}

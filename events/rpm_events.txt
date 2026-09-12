@@ -3,9 +3,12 @@
 ###############################################################################
 # rpm_events.1 - the post-war summary
 #
-# Fired once the player holds snapshotted states again. The restore buttons
-# land here in the next iteration; for now the event reports what the rebel AI
-# changed and the building-level snapshot is kept so the restores can use it.
+# Fired once the player holds snapshotted states again.
+#
+# A Victoria 3 event closes when an option is picked, but the mod needs several
+# independent restore buttons. So each restore option applies its effect,
+# recounts, and re-fires this same event - the summary reopens with the numbers
+# updated, and "Leave the rest as it is" closes it for good.
 ###############################################################################
 rpm_events.1 = {
 	type = country_event
@@ -27,7 +30,53 @@ rpm_events.1 = {
 
 	option = {
 		name = rpm_events.1.a
+		rpm_restore_pms = yes
+		rpm_build_summary = yes
+		trigger_event = { id = rpm_events.1 popup = yes }
+	}
+
+	option = {
+		name = rpm_events.1.b
 		default_option = yes
 		rpm_mark_states_reported = yes
+	}
+}
+
+###############################################################################
+# rpm_events.9 - diagnostics
+#
+# Not fired by anything. Open the console in debug mode and run
+#     event rpm_events.9
+# to see whether snapshots exist and what the mod currently counts, without
+# having to fight a whole civil war first.
+###############################################################################
+rpm_events.9 = {
+	type = country_event
+	placement = ROOT
+
+	title = rpm_events.9.t
+	desc = rpm_events.9.d
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	duration = 3
+
+	immediate = {
+		rpm_debug_count_states = yes
+	}
+
+	option = {
+		name = rpm_events.9.a
+		default_option = yes
+	}
+
+	# Runs both candidate spellings of add_building_level with a delta of 0, so
+	# nothing changes and error.log names whichever one is wrong.
+	option = {
+		name = rpm_events.9.b
+		capital ?= {
+			rpm_probe_add_building_level_type = yes
+			rpm_probe_add_building_level_building = yes
+		}
 	}
 }

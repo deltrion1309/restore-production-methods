@@ -1,0 +1,28 @@
+﻿###############################################################################
+# TEMPORARY - delete once the spelling is confirmed.
+#
+# add_building_level exists (the game ships a tooltip key for it, taking a
+# building type and a signed level) but no vanilla file uses it and the wiki's
+# generated effect list is truncated before the entry, so the parameter name is
+# a guess between 'type' and 'building'.
+#
+# Both spellings are written out here with a level delta of 0, so running them
+# changes nothing. Whichever one is wrong shows up in error.log, and then the
+# level restores can be generated with the right one.
+#
+# Scope for both: state.
+###############################################################################
+
+rpm_probe_add_building_level_type = {
+	add_building_level = {
+		type = building_barrack
+		level = 0
+	}
+}
+
+rpm_probe_add_building_level_building = {
+	add_building_level = {
+		building = building_barrack
+		level = 0
+	}
+}

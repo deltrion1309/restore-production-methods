@@ -23,9 +23,10 @@ Early development. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the desi
 
 | Phase | Feature | Status |
 |-------|---------------------------------|--------------------------|
-| 1     | Pre-war snapshot                | implemented, hooks verified in-game |
-| 2     | Post-war summary event          | implemented, untested    |
-| 3     | Restore actions                 | generated, not wired to the UI yet |
+| 1     | Pre-war snapshot                | implemented, loads clean in-game |
+| 2     | Post-war summary event          | implemented, loads clean in-game |
+| 3     | Restore production methods      | implemented, untested    |
+| 3     | Restore building levels / army  | blocked on one effect spelling |
 
 Production methods **and** building levels are both snapshotted. The per-building script is
 generated from the game's own data by `dev/generate_pm_script.py` — see
@@ -35,6 +36,17 @@ you change your mod set:
 ```powershell
 python dev/generate_pm_script.py --source "D:\SteamLibrary\steamapps\common\Victoria 3\game"
 ```
+
+## Diagnostics
+
+With the game in debug mode, the console command
+
+```
+event rpm_events.9
+```
+
+opens a panel showing how many states carry a snapshot and what the mod currently counts —
+useful for checking the mod without fighting a whole civil war first.
 
 ## Compatibility
 

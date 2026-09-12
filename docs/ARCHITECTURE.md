@@ -135,10 +135,13 @@ the `rpm_events` namespace.
 
 ## Open questions
 
-1. The exact parameter spelling of `add_building_level`. The effect exists and takes a signed
-   level delta, but the wiki's generated effect list is truncated before the entry and no vanilla
-   file uses it. The generated restore currently assumes `type` / `level`; the error log will say
-   if that is wrong.
+1. The exact parameter spelling of `add_building_level`, which the three level-based restores
+   (building levels, barracks, conscription centres) all need. The effect exists and takes a
+   signed level delta, but no vanilla file uses it and the wiki's generated effect list is
+   truncated before the entry, so `type` vs `building` is a coin flip.
+   `common/scripted_effects/rpm_probe_effects.txt` writes out both spellings with a delta of 0 and
+   the diagnostics event runs them, so the error log names the wrong one. Delete that file once
+   the answer is in.
 2. Whether state variables survive the state changing owner twice. The snapshot is written while
    the rebel holds the state and read after it comes back, so this is load-bearing. The first
    in-game run confirmed the hooks fire and the effects run; it did not confirm the round trip,
