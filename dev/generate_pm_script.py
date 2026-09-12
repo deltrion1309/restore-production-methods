@@ -214,6 +214,24 @@ def emit(
         stats["n_buildings"] += 1
         stats["max_groups"] = max(stats["max_groups"], len(group_names))
 
+        # Which restore bucket this building type belongs to, or None when the
+        # game does not let anyone resize it. Urban Centres, Manor Houses and
+        # Subsistence Farms are all expandable = no: they grow and shrink on
+        # their own from urbanisation, landowner wealth and rural population.
+        # Nothing can shrink them, so the diff must not count their growth as
+        # something the player can undo - otherwise the counter never reaches
+        # zero and the restore button sits there doing nothing.
+        meta = building_meta.get(building, {})
+        if meta.get("building_group") == "bg_army":
+            bucket = "army"
+        elif meta.get("building_group") == "bg_conscription":
+            bucket = "conscription"
+        elif meta.get("expandable") != "no":
+            bucket = "general"
+        else:
+            bucket = None
+        resizable = bucket is not None
+
         # ---- snapshot ----------------------------------------------------- #
         body = [
             f"\t\tset_variable = {{ name = rpm_lvl_{building} value = b:{building}.level }}",
@@ -276,10 +294,12 @@ def emit(
         diff_body = [
             "\t\tif = {",
             f"\t\t\tlimit = {{ NOT = {{ has_variable = rpm_lvl_{building} }} }}",
-            "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }",
+            "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }"
+            if resizable
+            else "\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }",
             "\t\t\tif = {",
             "\t\t\t\tlimit = { has_global_variable = rpm_debug }",
-            f"\t\t\t\tdebug_log = \"RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | {building}\"",
+            f"\t\t\t\tdebug_log = \"RPM {'rebel-built' if resizable else 'appeared'} | [THIS.GetState.GetNameNoFormatting] | {building}\"",
             "\t\t\t}",
             "\t\t}",
             "\t\telse = {",
@@ -293,12 +313,16 @@ def emit(
             "\t\t\t\t\t}",
             "\t\t\t\t}",
             "\t\t\t\tscope:rpm_player = {",
-            "\t\t\t\t\tchange_variable = { name = rpm_sum_buildings_expanded add = 1 }",
-            "\t\t\t\t\tchange_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }",
+            "\t\t\t\t\tchange_variable = { name = rpm_sum_buildings_expanded add = 1 }"
+            if resizable
+            else "\t\t\t\t\tchange_variable = { name = rpm_sum_buildings_grew add = 1 }",
+            "\t\t\t\t\tchange_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }"
+            if resizable
+            else "\t\t\t\t\t# growth of this building type cannot be undone by anyone",
             "\t\t\t\t}",
             "\t\t\t\tif = {",
             "\t\t\t\t\tlimit = { has_global_variable = rpm_debug }",
-            f"\t\t\t\t\tdebug_log = \"RPM expanded | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
+            f"\t\t\t\t\tdebug_log = \"RPM {'expanded' if resizable else 'grew'} | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
             "\t\t\t\t}",
             "\t\t\t}",
             "\t\t\telse_if = {",
@@ -388,15 +412,6 @@ def emit(
         #
         # Only shrinking is ever done. The mod undoes the rebel AI's expansions;
         # it does not rebuild what the AI tore down, which would be a free gift.
-        meta = building_meta.get(building, {})
-        bucket = None
-        if meta.get("building_group") == "bg_army":
-            bucket = "army"
-        elif meta.get("building_group") == "bg_conscription":
-            bucket = "conscription"
-        elif meta.get("expandable") != "no":
-            bucket = "general"
-
         if bucket:
             levels[bucket].append(
                 f"\tif = {{\n"

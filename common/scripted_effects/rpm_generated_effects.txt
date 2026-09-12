@@ -10759,10 +10759,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_angkor_wat }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_angkor_wat } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_angkor_wat"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_angkor_wat"
 			}
 		}
 		else = {
@@ -10776,12 +10776,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_angkor_wat | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_angkor_wat').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_angkor_wat | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_angkor_wat').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -10889,10 +10889,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_argebam }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_argebam } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_argebam"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_argebam"
 			}
 		}
 		else = {
@@ -10906,12 +10906,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_argebam | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_argebam').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_argebam | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_argebam').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -11206,10 +11206,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_army_logistics_center }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_army_logistics_center } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_army_logistics_center"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_army_logistics_center"
 			}
 		}
 		else = {
@@ -11223,12 +11223,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_army_logistics_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_army_logistics_center').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_army_logistics_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_army_logistics_center').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -12577,10 +12577,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_big_ben }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_big_ben } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_big_ben"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_big_ben"
 			}
 		}
 		else = {
@@ -12594,12 +12594,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_big_ben | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_big_ben').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_big_ben | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_big_ben').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -12707,10 +12707,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_capitol_hill }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_capitol_hill } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_capitol_hill"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_capitol_hill"
 			}
 		}
 		else = {
@@ -12724,12 +12724,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_capitol_hill | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_capitol_hill').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_capitol_hill | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_capitol_hill').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -12783,10 +12783,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_central_park }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_central_park } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_central_park"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_central_park"
 			}
 		}
 		else = {
@@ -12800,12 +12800,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_central_park | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_central_park').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_central_park | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_central_park').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -12989,10 +12989,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_chichen_itza }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_chichen_itza } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_chichen_itza"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_chichen_itza"
 			}
 		}
 		else = {
@@ -13006,12 +13006,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_chichen_itza | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_chichen_itza').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_chichen_itza | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_chichen_itza').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -13748,10 +13748,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_company_headquarter }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_company_headquarter } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_company_headquarter"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_company_headquarter"
 			}
 		}
 		else = {
@@ -13765,12 +13765,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_company_headquarter | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_company_headquarter').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_company_headquarter | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_company_headquarter').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -14175,10 +14175,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_company_regional_headquarter }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_company_regional_headquarter } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_company_regional_headquarter"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_company_regional_headquarter"
 			}
 		}
 		else = {
@@ -14192,12 +14192,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_company_regional_headquarter | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_company_regional_headquarter').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_company_regional_headquarter | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_company_regional_headquarter').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -15214,10 +15214,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_cristo_redentor }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_cristo_redentor } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_cristo_redentor"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_cristo_redentor"
 			}
 		}
 		else = {
@@ -15231,12 +15231,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_cristo_redentor | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_cristo_redentor').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_cristo_redentor | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_cristo_redentor').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -15588,10 +15588,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_easter_island_heads }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_easter_island_heads } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_easter_island_heads"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_easter_island_heads"
 			}
 		}
 		else = {
@@ -15605,12 +15605,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_easter_island_heads | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_easter_island_heads').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_easter_island_heads | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_easter_island_heads').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -15664,10 +15664,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_eiffel_tower }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_eiffel_tower } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_eiffel_tower"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_eiffel_tower"
 			}
 		}
 		else = {
@@ -15681,12 +15681,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_eiffel_tower | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_eiffel_tower').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_eiffel_tower | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_eiffel_tower').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -15927,10 +15927,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_estacion_de_madrid_atocha }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_estacion_de_madrid_atocha } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_estacion_de_madrid_atocha"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_estacion_de_madrid_atocha"
 			}
 		}
 		else = {
@@ -15944,12 +15944,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_estacion_de_madrid_atocha | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_estacion_de_madrid_atocha').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_estacion_de_madrid_atocha | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_estacion_de_madrid_atocha').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -16214,10 +16214,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_eye_of_sahara }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_eye_of_sahara } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_eye_of_sahara"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_eye_of_sahara"
 			}
 		}
 		else = {
@@ -16231,12 +16231,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_eye_of_sahara | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_eye_of_sahara').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_eye_of_sahara | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_eye_of_sahara').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -16290,10 +16290,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_financial_district }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_financial_district } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_financial_district"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_financial_district"
 			}
 		}
 		else = {
@@ -16307,12 +16307,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_financial_district | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_financial_district').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_financial_district | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_financial_district').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -17070,10 +17070,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_forbidden_city }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_forbidden_city } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_forbidden_city"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_forbidden_city"
 			}
 		}
 		else = {
@@ -17087,12 +17087,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_forbidden_city | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_forbidden_city').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_forbidden_city | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_forbidden_city').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -17525,10 +17525,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_giza_necropolis }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_giza_necropolis } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_giza_necropolis"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_giza_necropolis"
 			}
 		}
 		else = {
@@ -17542,12 +17542,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_giza_necropolis | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_giza_necropolis').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_giza_necropolis | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_giza_necropolis').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -17899,10 +17899,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_gold_field }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_gold_field } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_gold_field"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_gold_field"
 			}
 		}
 		else = {
@@ -17916,12 +17916,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_gold_field | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_gold_field').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_gold_field | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_gold_field').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -18601,10 +18601,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_gran_teatro_de_la_habana }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_gran_teatro_de_la_habana } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_gran_teatro_de_la_habana"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_gran_teatro_de_la_habana"
 			}
 		}
 		else = {
@@ -18618,12 +18618,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_gran_teatro_de_la_habana | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_gran_teatro_de_la_habana').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_gran_teatro_de_la_habana | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_gran_teatro_de_la_habana').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -18731,10 +18731,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_hagia_sophia }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_hagia_sophia } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_hagia_sophia"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_hagia_sophia"
 			}
 		}
 		else = {
@@ -18748,12 +18748,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_hagia_sophia | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_hagia_sophia').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_hagia_sophia | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_hagia_sophia').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -18861,10 +18861,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_halloween_castledracula }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_halloween_castledracula } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_halloween_castledracula"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_halloween_castledracula"
 			}
 		}
 		else = {
@@ -18878,12 +18878,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_halloween_castledracula | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_halloween_castledracula').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_halloween_castledracula | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_halloween_castledracula').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19292,10 +19292,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_kaiserforum_1 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_kaiserforum_1 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_1"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_1"
 			}
 		}
 		else = {
@@ -19309,12 +19309,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_1 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_1').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_1 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_1').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19422,10 +19422,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_kaiserforum_2 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_kaiserforum_2 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_2"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_2"
 			}
 		}
 		else = {
@@ -19439,12 +19439,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_2 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_2').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_2 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_2').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19552,10 +19552,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_kaiserforum_3 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_kaiserforum_3 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_3"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_3"
 			}
 		}
 		else = {
@@ -19569,12 +19569,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_3 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_3').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_3 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_3').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19682,10 +19682,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_kaiserforum_4 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_kaiserforum_4 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_4"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_4"
 			}
 		}
 		else = {
@@ -19699,12 +19699,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_4 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_4').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_kaiserforum_4 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kaiserforum_4').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19812,10 +19812,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_khaju_bridge }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_khaju_bridge } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_khaju_bridge"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_khaju_bridge"
 			}
 		}
 		else = {
@@ -19829,12 +19829,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_khaju_bridge | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_khaju_bridge').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_khaju_bridge | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_khaju_bridge').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -19888,10 +19888,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_kiel_canal }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_kiel_canal } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_kiel_canal"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_kiel_canal"
 			}
 		}
 		else = {
@@ -19905,12 +19905,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_kiel_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kiel_canal').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_kiel_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_kiel_canal').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -21110,10 +21110,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_machu_picchu }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_machu_picchu } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_machu_picchu"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_machu_picchu"
 			}
 		}
 		else = {
@@ -21127,12 +21127,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_machu_picchu | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_machu_picchu').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_machu_picchu | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_machu_picchu').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -21538,10 +21538,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_manila_cathedral_monument }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_manila_cathedral_monument } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_monument"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_monument"
 			}
 		}
 		else = {
@@ -21555,12 +21555,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_monument | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_monument').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_monument | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_monument').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -21668,10 +21668,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_manila_cathedral_original }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_manila_cathedral_original } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_original"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_original"
 			}
 		}
 		else = {
@@ -21685,12 +21685,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_original | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_original').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_original | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_original').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -21744,10 +21744,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_manila_cathedral_ruins }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_manila_cathedral_ruins } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_ruins"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_ruins"
 			}
 		}
 		else = {
@@ -21761,12 +21761,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_ruins | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_ruins').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_manila_cathedral_ruins | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manila_cathedral_ruins').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -21874,10 +21874,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_manor_house }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_manor_house } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_manor_house"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_manor_house"
 			}
 		}
 		else = {
@@ -21891,12 +21891,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_manor_house | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manor_house').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_manor_house | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_manor_house').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -22034,10 +22034,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_martandsuntemple }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_martandsuntemple } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_martandsuntemple"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_martandsuntemple"
 			}
 		}
 		else = {
@@ -22051,12 +22051,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_martandsuntemple | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_martandsuntemple').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_martandsuntemple | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_martandsuntemple').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -22462,10 +22462,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_mosque_of_djenne }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_mosque_of_djenne } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_mosque_of_djenne"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_mosque_of_djenne"
 			}
 		}
 		else = {
@@ -22479,12 +22479,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_mosque_of_djenne | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_mosque_of_djenne').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_mosque_of_djenne | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_mosque_of_djenne').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -23226,10 +23226,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_naval_logistics_center }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_naval_logistics_center } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_naval_logistics_center"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_naval_logistics_center"
 			}
 		}
 		else = {
@@ -23243,12 +23243,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_naval_logistics_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_naval_logistics_center').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_naval_logistics_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_naval_logistics_center').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -23302,10 +23302,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_observatorygreenwich }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_observatorygreenwich } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_observatorygreenwich"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_observatorygreenwich"
 			}
 		}
 		else = {
@@ -23319,12 +23319,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_observatorygreenwich | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_observatorygreenwich').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_observatorygreenwich | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_observatorygreenwich').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -23725,10 +23725,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_panama_canal }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_panama_canal } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_panama_canal"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_panama_canal"
 			}
 		}
 		else = {
@@ -23742,12 +23742,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_panama_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_panama_canal').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_panama_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_panama_canal').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -24015,10 +24015,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_pena_convent }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_pena_convent } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_pena_convent"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_pena_convent"
 			}
 		}
 		else = {
@@ -24032,12 +24032,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_pena_convent | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_pena_convent').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_pena_convent | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_pena_convent').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -24145,10 +24145,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_pena_palace }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_pena_palace } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_pena_palace"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_pena_palace"
 			}
 		}
 		else = {
@@ -24162,12 +24162,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_pena_palace | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_pena_palace').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_pena_palace | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_pena_palace').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -24275,10 +24275,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_petra }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_petra } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_petra"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_petra"
 			}
 		}
 		else = {
@@ -24292,12 +24292,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_petra | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_petra').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_petra | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_petra').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -24508,10 +24508,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_power_bloc_statue }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_power_bloc_statue } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_power_bloc_statue"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_power_bloc_statue"
 			}
 		}
 		else = {
@@ -24525,12 +24525,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_power_bloc_statue | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_power_bloc_statue').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_power_bloc_statue | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_power_bloc_statue').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -26173,10 +26173,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_sagrada_familia_cathedral_1 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_sagrada_familia_cathedral_1 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_1"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_1"
 			}
 		}
 		else = {
@@ -26190,12 +26190,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_1 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_1').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_1 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_1').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -26303,10 +26303,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_sagrada_familia_cathedral_2 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_sagrada_familia_cathedral_2 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_2"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_2"
 			}
 		}
 		else = {
@@ -26320,12 +26320,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_2 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_2').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_2 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_2').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -26433,10 +26433,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_sagrada_familia_cathedral_3 }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_sagrada_familia_cathedral_3 } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_3"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_3"
 			}
 		}
 		else = {
@@ -26450,12 +26450,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_3 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_3').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_sagrada_familia_cathedral_3 | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_sagrada_familia_cathedral_3').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -26563,10 +26563,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_saint_basils_cathedral }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_saint_basils_cathedral } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_saint_basils_cathedral"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_saint_basils_cathedral"
 			}
 		}
 		else = {
@@ -26580,12 +26580,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_saint_basils_cathedral | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_saint_basils_cathedral').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_saint_basils_cathedral | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_saint_basils_cathedral').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -27010,10 +27010,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_skyscraper }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_skyscraper } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_skyscraper"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_skyscraper"
 			}
 		}
 		else = {
@@ -27027,12 +27027,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_skyscraper | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_skyscraper').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_skyscraper | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_skyscraper').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -27170,10 +27170,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_statue_of_liberty }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_statue_of_liberty } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_statue_of_liberty"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_statue_of_liberty"
 			}
 		}
 		else = {
@@ -27187,12 +27187,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_statue_of_liberty | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_statue_of_liberty').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_statue_of_liberty | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_statue_of_liberty').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -27541,10 +27541,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_subsistence_farm }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_subsistence_farm } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_subsistence_farm"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_subsistence_farm"
 			}
 		}
 		else = {
@@ -27558,12 +27558,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_subsistence_farm | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_farm').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_subsistence_farm | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_farm').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -27812,10 +27812,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_subsistence_fishing_village }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_subsistence_fishing_village } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_subsistence_fishing_village"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_subsistence_fishing_village"
 			}
 		}
 		else = {
@@ -27829,12 +27829,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_subsistence_fishing_village | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_fishing_village').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_subsistence_fishing_village | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_fishing_village').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -28083,10 +28083,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_subsistence_orchard }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_subsistence_orchard } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_subsistence_orchard"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_subsistence_orchard"
 			}
 		}
 		else = {
@@ -28100,12 +28100,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_subsistence_orchard | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_orchard').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_subsistence_orchard | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_orchard').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -28354,10 +28354,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_subsistence_pasture }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_subsistence_pasture } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_subsistence_pasture"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_subsistence_pasture"
 			}
 		}
 		else = {
@@ -28371,12 +28371,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_subsistence_pasture | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_pasture').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_subsistence_pasture | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_pasture').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -28625,10 +28625,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_subsistence_rice_farm }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_subsistence_rice_farm } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_subsistence_rice_farm"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_subsistence_rice_farm"
 			}
 		}
 		else = {
@@ -28642,12 +28642,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_subsistence_rice_farm | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_rice_farm').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_subsistence_rice_farm | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_subsistence_rice_farm').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -28896,10 +28896,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_suez_canal }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_suez_canal } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_suez_canal"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_suez_canal"
 			}
 		}
 		else = {
@@ -28913,12 +28913,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_suez_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_suez_canal').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_suez_canal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_suez_canal').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -29815,10 +29815,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_taj_mahal }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_taj_mahal } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_taj_mahal"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_taj_mahal"
 			}
 		}
 		else = {
@@ -29832,12 +29832,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_taj_mahal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_taj_mahal').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_taj_mahal | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_taj_mahal').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -30189,10 +30189,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_temple_of_poseidon }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_temple_of_poseidon } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_temple_of_poseidon"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_temple_of_poseidon"
 			}
 		}
 		else = {
@@ -30206,12 +30206,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_temple_of_poseidon | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_temple_of_poseidon').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_temple_of_poseidon | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_temple_of_poseidon').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -31671,10 +31671,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_urban_center }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_urban_center } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_urban_center"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_urban_center"
 			}
 		}
 		else = {
@@ -31688,12 +31688,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_urban_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_urban_center').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_urban_center | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_urban_center').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -32080,10 +32080,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_vatican_city }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_vatican_city } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_vatican_city"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_vatican_city"
 			}
 		}
 		else = {
@@ -32097,12 +32097,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_vatican_city | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_vatican_city').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_vatican_city | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_vatican_city').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -32237,10 +32237,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_victoria_terminus }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_victoria_terminus } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_victoria_terminus"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_victoria_terminus"
 			}
 		}
 		else = {
@@ -32254,12 +32254,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_victoria_terminus | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_victoria_terminus').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_victoria_terminus | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_victoria_terminus').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -32527,10 +32527,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_wat_arun }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_wat_arun } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_wat_arun"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_wat_arun"
 			}
 		}
 		else = {
@@ -32544,12 +32544,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_wat_arun | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_wat_arun').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_wat_arun | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_wat_arun').GetValue|0]"
 				}
 			}
 			else_if = {
@@ -33250,10 +33250,10 @@ rpm_generated_diff_state = {
 		limit = { has_building = building_white_house }
 		if = {
 			limit = { NOT = { has_variable = rpm_lvl_building_white_house } }
-			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_new add = 1 } }
+			scope:rpm_player = { change_variable = { name = rpm_sum_buildings_grew add = 1 } }
 			if = {
 				limit = { has_global_variable = rpm_debug }
-				debug_log = "RPM rebel-built | [THIS.GetState.GetNameNoFormatting] | building_white_house"
+				debug_log = "RPM appeared | [THIS.GetState.GetNameNoFormatting] | building_white_house"
 			}
 		}
 		else = {
@@ -33267,12 +33267,12 @@ rpm_generated_diff_state = {
 					}
 				}
 				scope:rpm_player = {
-					change_variable = { name = rpm_sum_buildings_expanded add = 1 }
-					change_variable = { name = rpm_sum_levels_added add = scope:rpm_delta }
+					change_variable = { name = rpm_sum_buildings_grew add = 1 }
+					# growth of this building type cannot be undone by anyone
 				}
 				if = {
 					limit = { has_global_variable = rpm_debug }
-					debug_log = "RPM expanded | [THIS.GetState.GetNameNoFormatting] | building_white_house | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_white_house').GetValue|0]"
+					debug_log = "RPM grew | [THIS.GetState.GetNameNoFormatting] | building_white_house | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_building_white_house').GetValue|0]"
 				}
 			}
 			else_if = {

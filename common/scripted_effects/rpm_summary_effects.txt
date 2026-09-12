@@ -16,6 +16,7 @@ rpm_reset_summary = {
 	set_variable = { name = rpm_sum_pm_changes value = 0 }
 	set_variable = { name = rpm_sum_pm_buildings value = 0 }
 	set_variable = { name = rpm_sum_pm_blocked value = 0 }
+	set_variable = { name = rpm_sum_buildings_grew value = 0 }
 }
 
 # Scope: country

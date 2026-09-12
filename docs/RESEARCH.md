@@ -258,6 +258,34 @@ The working spelling is `[THIS.GetState.MakeScope.Var('x').GetValue|0]`, matchin
 `[ROOT.GetCountry.MakeScope.Var(...)]` for a country. `[THIS.GetState.GetNameNoFormatting]` works
 as-is and prints the state name.
 
+## 17. Some buildings cannot be resized by anyone
+
+The first level restore shrank 2 of 7 expanded buildings and then sat there doing nothing on
+every further click. The log named the survivors:
+
+```
+RPM shrinking | Kentucky  | building_university      | back to level 1   <- worked
+RPM shrinking | Tennessee | building_livestock_ranch | back to level 1   <- worked
+RPM expanded  | Kentucky  | building_urban_center    | snapshot level 1  <- never shrank
+RPM expanded  | Tennessee | building_manor_house     | snapshot level 19 <- never shrank
+```
+
+`building_urban_center`, `building_manor_house`, `building_army_logistics_center` and
+`building_subsistence_farm` all declare `buildable = no`, `expandable = no`, `downsizeable = no`.
+They grow and shrink on their own from urbanisation, landowner wealth and rural population. The
+generator already excluded them from the restore buckets - correctly - but the **diff** still
+counted their growth as an expansion. So `rpm_sum_buildings_expanded` never reached zero, the
+restore button stayed on offer, and clicking it did nothing.
+
+The diff now uses the same rule as the restore. Growth of a building nobody can resize is counted
+separately as `rpm_sum_buildings_grew` and logged as `RPM grew` / `RPM appeared`, and the summary
+says plainly that those follow urbanisation and population rather than anyone's policy. Attributing
+them to the rebels was wrong anyway.
+
+The general lesson, third time now: **any counter the summary offers a button for must count
+exactly what that button can change.** The same mismatch caused the blocked production methods in
+§15.
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)
