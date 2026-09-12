@@ -70,6 +70,11 @@ Utilities, Gameplay, 1.13
 rebels disturbed in red, the ones set right in green. Regenerate with
 `python dev/make_thumbnail.py --only states` and copy it to the root.
 
+## Paste-ready description
+
+[workshop-description.bbcode.txt](workshop-description.bbcode.txt) is the same copy marked up in
+Steam's BBCode. Paste it straight into the Workshop item's description field.
+
 ## Listing image
 
 `docs/workshop-banner.png` — 1280×720, the same design as the thumbnail with room for the pitch.

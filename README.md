@@ -87,7 +87,9 @@ See [dev/README.md](dev/README.md) for the test loop.
 
 `thumbnail.png` in the repository root is the Workshop thumbnail (512×512, drawn by
 `dev/make_thumbnail.py` — re-run it to change the design). Listing copy lives in
-[docs/WORKSHOP.md](docs/WORKSHOP.md).
+[docs/WORKSHOP.md](docs/WORKSHOP.md), and [docs/PUBLISHING.md](docs/PUBLISHING.md) covers the
+upload — including why you must run `dev/package.ps1` first rather than uploading through the
+development junction.
 
 ## Licence
 

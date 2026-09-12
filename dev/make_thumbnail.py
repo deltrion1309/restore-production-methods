@@ -310,6 +310,10 @@ def main() -> int:
     names = [args.only] if args.only else sorted(VARIANTS)
     for name in names:
         img = VARIANTS[name]()
+        # Saved with an alpha channel: the workshop mods whose thumbnails the
+        # Paradox launcher definitely renders are RGBA, so match them rather
+        # than find out the hard way.
+        img = img.convert("RGBA")
         path = out / f"thumbnail-{name}.png"
         img.save(path, "PNG", optimize=True)
         print(f"{path}  {img.size[0]}x{img.size[1]}  {path.stat().st_size / 1024:.0f} KiB")

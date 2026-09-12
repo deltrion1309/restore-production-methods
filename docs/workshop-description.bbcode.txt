@@ -1,0 +1,47 @@
+[h1]Restore Production Methods[/h1]
+
+When a revolution or secession breaks out, the states that defect are handed to a rebel AI. While it holds them it rearranges your industry to suit its own economy — flipping production methods, expanding buildings, raising troops. Win the war back and you inherit the mess, with no record of what was touched.
+
+This mod keeps the record.
+
+[h2]What it does[/h2]
+
+[list]
+[*][b]Snapshots[/b] every state the moment it defects: the level of every building, and the active production method of every production method group.
+[*][b]Reports[/b] what changed once the states are yours again — how many production methods were changed, in how many buildings, across how many states, and what the rebels expanded.
+[*][b]Puts it back[/b], from buttons in that same summary.
+[/list]
+
+[h2]The restore buttons[/h2]
+
+[list]
+[*]Restore every production method to what it was before the war
+[*]Undo the rebels' building expansions
+[*]Shrink barracks back to their pre-war size
+[*]Shrink conscription centres back to their pre-war size
+[/list]
+
+Nothing is ever demolished and nothing is ever built up. Buildings the rebels raised from nothing are left standing, and a building they shrank stays shrunk. The mod only undoes what it can undo.
+
+It is also honest about what it cannot do. A production method that a law or technology no longer permits — freed slaves, say — is reported separately rather than silently skipped. Buildings that grow on their own, like urban centres and manor houses, are never blamed on the rebels, because nothing in the game can resize them.
+
+[h2]Compatibility[/h2]
+
+[list]
+[*]Built and tested against [b]1.13[/b].
+[*][b]Overrides no vanilla files.[/b] Every hook uses Paradox's own additive on_actions pattern, so it should sit happily beside other mods.
+[*][b]Works with modded buildings and modded production methods.[/b] The per-building script is generated from the game's own data files, and the generator can be pointed at your whole mod set.
+[*]Single player. Not tested in multiplayer.
+[*]Snapshots are only taken for human players, so AI civil wars cost you nothing.
+[/list]
+
+[h2]Notes[/h2]
+
+[list]
+[*]Shrinking a building rebuilds it, which resets its production methods — so the mod puts those back at the same time. For barracks this means the battalions are raised fresh.
+[*]The barracks and conscription centre buttons have had the least testing, simply because no test civil war ever expanded those. They are guarded the same way as the rest, but if one misbehaves, please say so.
+[*]Run the game in debug mode and use the console command [b]event rpm_events.9[/b] for a diagnostics panel, including verbose logging that names every state and building the mod touches.
+[/list]
+
+Source, and a long account of what the Victoria 3 script engine will and will not allow, at
+[url=https://github.com/deltrion1309/restore-production-methods]github.com/deltrion1309/restore-production-methods[/url]
