@@ -244,7 +244,10 @@ def emit(
                     keyword = "if" if position == 0 else "else_if"
                     branches.append(
                         f"\t\t\t{keyword} = {{\n"
-                        f"\t\t\t\tlimit = {{ var:rpm_pm{index}_{building} = {position} }}\n"
+                        f"\t\t\t\tlimit = {{\n"
+                        f"\t\t\t\t\tvar:rpm_pm{index}_{building} = {position}\n"
+                        f"\t\t\t\t\tcan_activate_production_method = {{ building_type = {building} production_method = {method} }}\n"
+                        f"\t\t\t\t}}\n"
                         f"\t\t\t\tactivate_production_method = {{ building_type = {building} production_method = {method} }}\n"
                         f"\t\t\t\tif = {{\n"
                         f"\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
@@ -295,7 +298,7 @@ def emit(
             "\t\t\t\t}",
             "\t\t\t\tif = {",
             "\t\t\t\t\tlimit = { has_global_variable = rpm_debug }",
-            f"\t\t\t\t\tdebug_log = \"RPM expanded | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
+            f"\t\t\t\t\tdebug_log = \"RPM expanded | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
             "\t\t\t\t}",
             "\t\t\t}",
             "\t\t\telse_if = {",
@@ -303,7 +306,7 @@ def emit(
             "\t\t\t\tscope:rpm_player = { change_variable = { name = rpm_sum_buildings_reduced add = 1 } }",
             "\t\t\t\tif = {",
             "\t\t\t\t\tlimit = { has_global_variable = rpm_debug }",
-            f"\t\t\t\t\tdebug_log = \"RPM reduced | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
+            f"\t\t\t\t\tdebug_log = \"RPM reduced | [THIS.GetState.GetNameNoFormatting] | {building} | snapshot level [THIS.GetState.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"",
             "\t\t\t\t}",
             "\t\t\t}",
             "\t\t}",
@@ -321,10 +324,20 @@ def emit(
                         f"\t\t\t\t\tvar:rpm_pm{index}_{building} = {position}\n"
                         f"\t\t\t\t\tNOT = {{ is_production_method_active = {{ building_type = {building} production_method = {method} }} }}\n"
                         f"\t\t\t\t}}\n"
-                        f"\t\t\t\tscope:rpm_player = {{ change_variable = {{ name = rpm_sum_pm_changes add = 1 }} }}\n"
                         f"\t\t\t\tif = {{\n"
-                        f"\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
-                        f"\t\t\t\t\tdebug_log = \"RPM pm changed | [THIS.GetState.GetNameNoFormatting] | {building} | group {index} | was {method}\"\n"
+                        f"\t\t\t\t\tlimit = {{ can_activate_production_method = {{ building_type = {building} production_method = {method} }} }}\n"
+                        f"\t\t\t\t\tscope:rpm_player = {{ change_variable = {{ name = rpm_sum_pm_changes add = 1 }} }}\n"
+                        f"\t\t\t\t\tif = {{\n"
+                        f"\t\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
+                        f"\t\t\t\t\t\tdebug_log = \"RPM pm changed | [THIS.GetState.GetNameNoFormatting] | {building} | group {index} | was {method}\"\n"
+                        f"\t\t\t\t\t}}\n"
+                        f"\t\t\t\t}}\n"
+                        f"\t\t\t\telse = {{\n"
+                        f"\t\t\t\t\tscope:rpm_player = {{ change_variable = {{ name = rpm_sum_pm_blocked add = 1 }} }}\n"
+                        f"\t\t\t\t\tif = {{\n"
+                        f"\t\t\t\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
+                        f"\t\t\t\t\t\tdebug_log = \"RPM pm blocked | [THIS.GetState.GetNameNoFormatting] | {building} | group {index} | {method} is no longer available\"\n"
+                        f"\t\t\t\t\t}}\n"
                         f"\t\t\t\t}}\n"
                         f"\t\t\t}}"
                     )
@@ -344,6 +357,7 @@ def emit(
                         f"\t\t\t\t\thas_variable = rpm_pm{index}_{building}\n"
                         f"\t\t\t\t\tvar:rpm_pm{index}_{building} = {position}\n"
                         f"\t\t\t\t\tNOT = {{ is_production_method_active = {{ building_type = {building} production_method = {method} }} }}\n"
+                        f"\t\t\t\t\tcan_activate_production_method = {{ building_type = {building} production_method = {method} }}\n"
                         f"\t\t\t\t}}"
                     )
             diff_body.append(
@@ -394,7 +408,7 @@ def emit(
                 f"\t\tsave_temporary_scope_value_as = {{ name = rpm_target_level value = var:rpm_lvl_{building} }}\n"
                 f"\t\tif = {{\n"
                 f"\t\t\tlimit = {{ has_global_variable = rpm_debug }}\n"
-                f"\t\t\tdebug_log = \"RPM shrinking | [THIS.GetState.GetNameNoFormatting] | {building} | back to level [THIS.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"\n"
+                f"\t\t\tdebug_log = \"RPM shrinking | [THIS.GetState.GetNameNoFormatting] | {building} | back to level [THIS.GetState.MakeScope.Var('rpm_lvl_{building}').GetValue|0]\"\n"
                 f"\t\t}}\n"
                 f"\t\tremove_building = {building}\n"
                 f"\t\tcreate_building = {{\n"

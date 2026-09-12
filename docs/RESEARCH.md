@@ -226,6 +226,38 @@ Assertion failed: Trying to reposition a dead formation
 Twice, at the moment of the restore. Nothing breaks, but veterancy and any unit-level state are
 lost, so the option text says plainly that the battalions are raised fresh.
 
+## 15. A production method can become unrestorable
+
+The first full restore left two changes behind, and the verbose log named them exactly:
+
+```
+RPM pm restored | Louisiana | building_sugar_plantation | group 2 | to slave_exploitation_sugar
+RPM pm changed  | Louisiana | building_sugar_plantation | group 2 | was slave_exploitation_sugar
+```
+
+The restore ran, the game silently ignored it, and the recount found the same difference again.
+The snapshot was taken while slavery was still legal; by the time the states came back it was
+not, and `activate_production_method` will not set a method the country may no longer use. It
+fails quietly - no error, no log line of its own.
+
+`can_activate_production_method = { building_type = ... production_method = ... }` is the guard.
+The diff now splits a mismatch into *restorable* and *blocked*, the restore never attempts a
+blocked one, and the summary reports them separately so the player knows why those buildings
+stay as they are. Without the split, the restore button could never clear its counter and the
+summary would reopen until its cap ran out.
+
+## 16. State-scope variables in text need GetState
+
+`[THIS.MakeScope.Var('x')]` fails in a state scope:
+
+```
+Could not find promote for 'MakeScope' in 'THIS.MakeScope.Var('rpm_lvl_building_manor_house').GetValue'
+```
+
+The working spelling is `[THIS.GetState.MakeScope.Var('x').GetValue|0]`, matching
+`[ROOT.GetCountry.MakeScope.Var(...)]` for a country. `[THIS.GetState.GetNameNoFormatting]` works
+as-is and prints the state name.
+
 ## Sources
 
 * Installed game files, Victoria 3 1.13 (`D:\SteamLibrary\steamapps\common\Victoria 3\game`)
