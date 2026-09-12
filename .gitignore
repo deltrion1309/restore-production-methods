@@ -3,6 +3,9 @@
 steamcmd/
 *.zip
 
+# Generated thumbnail candidates - only the chosen thumbnail.png is committed
+build/
+
 # Editor / OS noise
 .vscode/
 .idea/

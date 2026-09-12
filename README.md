@@ -83,6 +83,12 @@ game will happily load the stale one.
 
 See [dev/README.md](dev/README.md) for the test loop.
 
+## Workshop
+
+`thumbnail.png` in the repository root is the Workshop thumbnail (512×512, drawn by
+`dev/make_thumbnail.py` — re-run it to change the design). Listing copy lives in
+[docs/WORKSHOP.md](docs/WORKSHOP.md).
+
 ## Licence
 
 Not yet decided.
